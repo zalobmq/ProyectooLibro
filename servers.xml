@@ -1,4 +1,4 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<servers serverConnection="Mariadb">
-    <name>proyecto libro</name>
+<servers serverConnection="H2">
+    <name>aplicacionH2</name>
 </servers>

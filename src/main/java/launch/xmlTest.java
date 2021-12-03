@@ -12,9 +12,7 @@ public class xmlTest {
 	
 	
 	public static void saveTest() {
-		PersistenceUnit pu=new PersistenceUnit("proyecto libro", "Mariadb");
-	WrapperForXML.saveFile(pu);
+		PersistenceUnit pu=new PersistenceUnit("aplicacionH2", "H2");
+		WrapperForXML.saveFile(pu);
 	}
-	
-
 }
