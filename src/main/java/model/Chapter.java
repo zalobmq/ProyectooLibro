@@ -44,6 +44,11 @@ public class Chapter {
 
 	public Chapter() {
 		super();
+		this.id = -1L;
+		this.name = "Not found";
+		this.chapterNumber = 0;
+		this.finish = true;
+		this.notes = null;
 	}
 
 	public Long getId() {

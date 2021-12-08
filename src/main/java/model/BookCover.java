@@ -33,6 +33,9 @@ public class BookCover {
 
 	public BookCover() {
 		super();
+		this.id = -1L;
+		this.image = null;
+		this.book = null;
 	}
 
 	public Long getId() {

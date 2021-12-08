@@ -49,6 +49,12 @@ public class Author {
 
 	public Author() {
 		super();
+		this.id = -1L;
+		this.name = "Not found";
+		this.surname = "Not found";
+		this.password = "Not found";
+		this.email = null;
+		this.books = null;
 	}
 
 	public Long getId() {

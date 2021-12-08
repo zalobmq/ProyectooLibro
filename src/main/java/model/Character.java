@@ -38,6 +38,10 @@ public class Character {
 
 	public Character() {
 		super();
+		this.id = -1L;
+		this.name = "Not found";
+		this.description = "Not found";
+		this.death = true;
 	}
 
 	public Long getId() {

@@ -11,5 +11,4 @@ module controller {
     opens utils to java.xml.bind;
     exports controller;
     exports utils;
-    
 }

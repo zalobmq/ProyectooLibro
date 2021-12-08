@@ -34,6 +34,9 @@ public class Landscape {
 
 	public Landscape() {
 		super();
+		this.id = -1L;
+		this.name = "Not found";
+		this.description = "Not found";
 	}
 
 	public Long getId() {

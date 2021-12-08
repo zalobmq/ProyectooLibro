@@ -35,6 +35,10 @@ public class Saga {
 
 	public Saga() {
 		super();
+		this.id = -1L;
+		this.name = "Not found";
+		this.books = null;
+
 	}
 
 	public Long getId() {
