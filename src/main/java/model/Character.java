@@ -75,24 +75,11 @@ public class Character {
 	public void setDeath(boolean death) {
 		this.death = death;
 	}
-<<<<<<< HEAD
-=======
-
+	
 	@Override
 	public String toString() {
 		return "Character [id=" + id + ", name=" + name + ", description=" + description + ", death=" + death + "]";
 	}
-	
-	
-	
->>>>>>> 866d80bc05d2f20ccd8dce53e1db6000805699d6
-
-	@Override
-	public String toString() {
-		return "Character [id=" + id + ", name=" + name + ", description=" + description + ", death=" + death + "]";
-	}
-	
-	
-	
+		
 }
 
