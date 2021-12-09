@@ -83,4 +83,8 @@ public class Character {
 	
 	
 	
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 18f731c1910b868b0f2c24bffdc820c66f35a533

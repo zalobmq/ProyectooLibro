@@ -13,5 +13,4 @@ open module controller {
     exports model;
     exports controller;
     exports utils;
-    
 }
