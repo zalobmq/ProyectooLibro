@@ -16,37 +16,37 @@ public class Note implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID")
-	private Long id;
-	@Column(name = "TITLE")
+	@Column(name = "id")
+	private long id;
+	@Column(name = "tittle")
 	private String title;
-	@Column(name = "TEXT")
+	@Column(name = "text")
 	private String text;
 
-	public Note(Long id, String title, String text) {
-		super();
+	public Note(long id, String title, String text) {
+		
 		this.id = id;
 		this.title = title;
 		this.text = text;
 	}
 
 	public Note(String title, String text) {
-		super();
+		
 		this.title = title;
 		this.text = text;
 	}
 
 	public Note() {
-		super();
+		this.id=-1;
 		this.title = "Not found";
 		this.text = "Not found";
 	}
 
-	public Long getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Long id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

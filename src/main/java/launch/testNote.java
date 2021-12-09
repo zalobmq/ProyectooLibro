@@ -10,7 +10,7 @@ public class testNote {
 	private static EntityManager em;
 	private static EntityManagerFactory emf;
 	public static void main(String[] args) {
-		emf=Persistence.createEntityManagerFactory("aplicacionMariaDB");
+		emf=Persistence.createEntityManagerFactory("aplicacionH2");
 		em=emf.createEntityManager();
 		em.getTransaction().begin();
 		Note n1 = new Note();
