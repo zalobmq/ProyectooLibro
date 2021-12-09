@@ -12,6 +12,7 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Book")
 public class Book {
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
@@ -22,6 +23,7 @@ public class Book {
 	private String sypnosis;
 	@Column(name = "GENRE")
 	private String genre;
+	
 	private List<Chapter> chapters;
 	private List<Note> notes;
 	private List<Landscape> landscapes;
