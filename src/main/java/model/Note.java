@@ -7,6 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,11 +18,14 @@ public class Note implements Serializable {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id")
-	private long id;
+	private Long id;
 	@Column(name = "tittle")
 	private String title;
 	@Column(name = "text")
 	private String text;
+	@ManyToOne()
+	@JoinColumn(name = "Book_id")
+	private Book book_note;
 
 	public Note(long id, String title, String text) {
 		
@@ -36,7 +41,7 @@ public class Note implements Serializable {
 	}
 
 	public Note() {
-		this.id=-1;
+		this.id=-1L;
 		this.title = "Not found";
 		this.text = "Not found";
 	}

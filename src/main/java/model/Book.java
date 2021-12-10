@@ -2,11 +2,18 @@ package model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -22,11 +29,26 @@ public class Book {
 	private String sypnosis;
 	@Column(name = "GENRE")
 	private String genre;
-	private List<Chapter> chapters;
-	private List<Note> notes;
-	private List<Landscape> landscapes;
-	private List<Character> characters;
+	@JoinColumn(name = "book")
+	@OneToOne(fetch = FetchType.LAZY)
+	private BookCover bookcover;
 	
+	
+	@OneToMany(mappedBy = "book_note", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Note> notes;
+	@OneToMany(mappedBy = "book_chapter", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Chapter> chapters;
+    @ManyToMany(mappedBy = "books_landscape")
+	private List<Landscape> landscapes;
+    @ManyToMany(mappedBy = "books_character")
+	private List<Character> characters;
+	@ManyToOne()
+	@JoinColumn(name = "books_author")
+	private Author author;
+	@ManyToOne()
+	@JoinColumn(name = "books_saga")
+	private Saga saga;
+
 	public Book(Long id, String title, String sypnosis, String genre, List<Chapter> chapters, List<Note> notes,
 			List<Landscape> landscapes, List<Character> characters) {
 		super();
@@ -125,7 +147,5 @@ public class Book {
 		return "Book [id=" + id + ", title=" + title + ", sypnosis=" + sypnosis + ", genre=" + genre + ", chapters="
 				+ chapters + ", notes=" + notes + ", landscapes=" + landscapes + ", characters=" + characters + "]";
 	}
-	
-	
-	
+
 }
