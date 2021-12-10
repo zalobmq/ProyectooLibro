@@ -1,5 +1,7 @@
 package utils;
 
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -8,18 +10,32 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class PersistenceUnit {
 	//esto son pruebas
 	private String name;
-	private String serverConnection;
 	
 	
+	private static EntityManagerFactory emf;
+	private static final String PUN="aplicacionMariaDB";
+	
+	public static EntityManagerFactory getInstance() {
+		if(emf==null) {
+			emf=Persistence.createEntityManagerFactory(PUN);
+		}
+		return emf;
+	}
+	public static EntityManagerFactory getInstance(String name) {
+		if(emf==null) {
+			emf=Persistence.createEntityManagerFactory(name);
+		}
+		return emf;
+	}
 
 	public PersistenceUnit() {
 		super();
 	}
 
-	public PersistenceUnit(String name, String serverConnection) {
+	public PersistenceUnit(String name) {
 		super();
 		this.name = name;
-		this.serverConnection = serverConnection;
+		
 	}
 
 	/**
@@ -36,21 +52,15 @@ public class PersistenceUnit {
 	public void setName(String name) {
 		this.name = name;
 	}
-
 	/**
-	 * @return the serverConnection
+	 * @return the pun
 	 */
-	@XmlAttribute(name="serverConnection")
-	public String getServerConnection() {
-		return serverConnection;
+	public static String getPun() {
+		return PUN;
 	}
 
-	/**
-	 * @param serverConnection the serverConnection to set
-	 */
-	public void setServerConnection(String serverConnection) {
-		this.serverConnection = serverConnection;
-	}
+
+
 	
 	
 	
