@@ -26,8 +26,9 @@ public class AuthorImpMariaDB{
 
 	
 	public static List<Author> getAll() throws DAOException {
-		// TODO Auto-generated method stub
-		return null;
+		List<Author> result=new ArrayList<Author>();
+		
+		return result;
 	}
 
 	
@@ -42,7 +43,7 @@ public class AuthorImpMariaDB{
 			
 		} catch (Exception e) {
 			result=false;
-			throw new DAOException("Can´t delete");
+			throw new DAOException("Can´t delete",e);
 		}
 		return result;
 		
@@ -58,7 +59,7 @@ public class AuthorImpMariaDB{
 			result=true;
 		} catch (Exception e) {
 			result=false;
-			throw new DAOException("Can´t save");
+			throw new DAOException("Can´t save",e);
 		}
 		
 		return result;

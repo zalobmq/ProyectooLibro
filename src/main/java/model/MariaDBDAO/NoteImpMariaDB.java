@@ -43,7 +43,7 @@ public class NoteImpMariaDB {
 			
 		} catch (Exception e) {
 			result=false;
-			throw new DAOException("Can´t delete");
+			throw new DAOException("Can´t delete",e);
 		}
 		return result;
 	}
@@ -59,7 +59,7 @@ public class NoteImpMariaDB {
 			
 		} catch (Exception e) {
 			result=false;
-			throw new DAOException("Can´t delete");
+			throw new DAOException("Can´t delete",e);
 		}
 		return result;
 	}

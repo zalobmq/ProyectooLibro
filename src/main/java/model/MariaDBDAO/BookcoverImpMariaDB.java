@@ -1,5 +1,6 @@
 package model.MariaDBDAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -13,60 +14,63 @@ import utils.PersistenceUnit;
 public class BookcoverImpMariaDB {
 
 	public static EntityManager createEM() {
-		EntityManagerFactory emf=PersistenceUnit.getInstance();
-		
+		EntityManagerFactory emf = PersistenceUnit.getInstance();
+
 		return emf.createEntityManager();
 	}
-	
+
 	public static EntityTransaction beginsession() {
-		EntityManager em=createEM();
+		EntityManager em = createEM();
 		return em.getTransaction();
 	}
 
 	public static List<BookCover> getAll() throws DAOException {
-		// TODO Auto-generated method stub
-		return null;
+		List<BookCover> result = new ArrayList<>();
+
+		return result;
 	}
 
 	public static boolean delete(BookCover bc) throws DAOException {
-		boolean result=false;
+		boolean result = false;
 		try {
-			EntityManager em=createEM();
+			EntityManager em = createEM();
 			em.getTransaction().begin();
 			em.remove(bc);
 			em.getTransaction().commit();
-			result =true;
-			
+			result = true;
+
 		} catch (Exception e) {
-			result=false;
-			throw new DAOException("Can´t delete");
+			result = false;
+			throw new DAOException("Can´t delete", e);
 		}
 		return result;
 	}
 
 	public static boolean save(BookCover bc) throws DAOException {
-		boolean result=false;
+		boolean result = false;
 		try {
-			EntityManager em=createEM();
+			EntityManager em = createEM();
 			em.getTransaction().begin();
 			em.persist(bc);
 			em.getTransaction().begin();
-			result=true;
+			result = true;
 		} catch (Exception e) {
-			result=false;
-			throw new DAOException("Can´t save");
+			result = false;
+			throw new DAOException("Can´t save", e);
 		}
-		
+
 		return result;
 	}
 
 	public static BookCover getByID(long id) throws DAOException {
-		// TODO Auto-generated method stub
-		return null;
+		BookCover result=new BookCover();
+		
+		return result;
 	}
 
 	public static List<BookCover> getByName(String name) throws DAOException {
-		// TODO Auto-generated method stub
-		return null;
+		List<BookCover> result = new ArrayList<>();
+
+		return result;
 	}
 }

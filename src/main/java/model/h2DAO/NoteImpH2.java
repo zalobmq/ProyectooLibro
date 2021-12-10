@@ -1,4 +1,4 @@
-package model.MariaDBDAO;
+package model.h2DAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,12 +7,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
-import model.Landscape;
+import model.Note;
 import model.IDAO.DAOException;
 import utils.PersistenceUnit;
 
-public class LandscapeImpMariaDB {
-	
+public class NoteImpH2 {
+
+
 	public static EntityManager createEM() {
 		EntityManagerFactory emf=PersistenceUnit.getInstance();
 		
@@ -24,17 +25,19 @@ public class LandscapeImpMariaDB {
 		return em.getTransaction();
 	}
 
-	public static List<Landscape> getAll() throws DAOException {
-		List<Landscape> result=new ArrayList<Landscape>();
+
+	public static List<Note> getAll() throws DAOException {
+		List<Note> result=new ArrayList<Note>();
+		
 		return result;
 	}
 
-	public static boolean delete(Landscape l) throws DAOException {
+	public static boolean delete(Note n) throws DAOException {
 		boolean result=false;
 		try {
 			EntityManager em=createEM();
 			em.getTransaction().begin();
-			em.remove(l);
+			em.remove(n);
 			em.getTransaction().commit();
 			result =true;
 			
@@ -45,32 +48,32 @@ public class LandscapeImpMariaDB {
 		return result;
 	}
 
-	public static boolean save(Landscape l) throws DAOException {
+	public static boolean save(Note n) throws DAOException {
 		boolean result=false;
 		try {
 			EntityManager em=createEM();
 			em.getTransaction().begin();
-			em.persist(l);
-			em.getTransaction().begin();
-			result=true;
+			em.remove(n);
+			em.getTransaction().commit();
+			result =true;
+			
 		} catch (Exception e) {
 			result=false;
-			throw new DAOException("Can´t save",e);
+			throw new DAOException("Can´t delete",e);
 		}
-		
 		return result;
 	}
 
-	public static Landscape getByID(long id) throws DAOException {
-		Landscape result=new Landscape();
+	public static Note getByID(long id) throws DAOException {
+		Note result=new Note();
+		
+		return result;
+		
+	}
+
+	public static List<Note> getByName(String name) throws DAOException {
+		List<Note> result=new ArrayList<Note>();
 		
 		return result;
 	}
-
-	public static List<Landscape> getByName(String name) throws DAOException {
-		List<Landscape> result=new ArrayList<Landscape>();
-		
-		return result;
-	}
-
 }
