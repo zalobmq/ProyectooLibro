@@ -1,4 +1,4 @@
-package model.MariaDBDAO;
+package model.h2DAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,8 +11,8 @@ import model.Landscape;
 import model.IDAO.DAOException;
 import utils.PersistenceUnit;
 
-public class LandscapeImpMariaDB {
-	
+public class LandscapeImpH2 {
+
 	public static EntityManager createEM() {
 		EntityManagerFactory emf=PersistenceUnit.getInstance();
 		
@@ -72,5 +72,4 @@ public class LandscapeImpMariaDB {
 		
 		return result;
 	}
-
 }

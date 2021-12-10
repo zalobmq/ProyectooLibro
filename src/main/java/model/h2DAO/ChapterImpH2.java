@@ -1,4 +1,4 @@
-package model.MariaDBDAO;
+package model.h2DAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,7 +11,7 @@ import model.Chapter;
 import model.IDAO.DAOException;
 import utils.PersistenceUnit;
 
-public class ChapterImpMariaDB {
+public class ChapterImpH2 {
 
 	public static EntityManager createEM() {
 		EntityManagerFactory emf = PersistenceUnit.getInstance();
@@ -42,7 +42,7 @@ public class ChapterImpMariaDB {
 
 		} catch (Exception e) {
 			result = false;
-			throw new DAOException("Can´t delete",e);
+			throw new DAOException("Can´t delete", e);
 		}
 		return result;
 	}
@@ -57,7 +57,7 @@ public class ChapterImpMariaDB {
 			result = true;
 		} catch (Exception e) {
 			result = false;
-			throw new DAOException("Can´t save",e);
+			throw new DAOException("Can´t save", e);
 		}
 
 		return result;

@@ -1,4 +1,4 @@
-package model.MariaDBDAO;
+package model.h2DAO;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,12 +7,11 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
-import model.Chapter;
+import model.BookCover;
 import model.IDAO.DAOException;
 import utils.PersistenceUnit;
 
-public class ChapterImpMariaDB {
-
+public class BookcoverImpH2 {
 	public static EntityManager createEM() {
 		EntityManagerFactory emf = PersistenceUnit.getInstance();
 
@@ -24,53 +23,52 @@ public class ChapterImpMariaDB {
 		return em.getTransaction();
 	}
 
-	public static List<Chapter> getAll() throws DAOException {
-		List<Chapter> result = new ArrayList<Chapter>();
+	public static List<BookCover> getAll() throws DAOException {
+		List<BookCover> result = new ArrayList<>();
 
 		return result;
 	}
 
-	public static boolean delete(Chapter c) throws DAOException {
-
+	public static boolean delete(BookCover bc) throws DAOException {
 		boolean result = false;
 		try {
 			EntityManager em = createEM();
 			em.getTransaction().begin();
-			em.remove(c);
+			em.remove(bc);
 			em.getTransaction().commit();
 			result = true;
 
 		} catch (Exception e) {
 			result = false;
-			throw new DAOException("Can´t delete",e);
+			throw new DAOException("Can´t delete", e);
 		}
 		return result;
 	}
 
-	public static boolean save(Chapter c) throws DAOException {
+	public static boolean save(BookCover bc) throws DAOException {
 		boolean result = false;
 		try {
 			EntityManager em = createEM();
 			em.getTransaction().begin();
-			em.persist(c);
+			em.persist(bc);
 			em.getTransaction().begin();
 			result = true;
 		} catch (Exception e) {
 			result = false;
-			throw new DAOException("Can´t save",e);
+			throw new DAOException("Can´t save", e);
 		}
 
 		return result;
 	}
 
-	public static Chapter getByID(long id) throws DAOException {
-		Chapter result = new Chapter();
+	public static BookCover getByID(long id) throws DAOException {
+		BookCover result = new BookCover();
 
 		return result;
 	}
 
-	public static List<Chapter> getByName(String name) throws DAOException {
-		List<Chapter> result = new ArrayList<Chapter>();
+	public static List<BookCover> getByName(String name) throws DAOException {
+		List<BookCover> result = new ArrayList<>();
 
 		return result;
 	}

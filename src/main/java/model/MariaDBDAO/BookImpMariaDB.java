@@ -40,7 +40,7 @@ public class BookImpMariaDB {
 			
 		} catch (Exception e) {
 			result=false;
-			throw new DAOException("Can´t delete");
+			throw new DAOException("Can´t delete",e);
 		}
 		return result;
 	}
@@ -55,7 +55,7 @@ public class BookImpMariaDB {
 			result=true;
 		} catch (Exception e) {
 			result=false;
-			throw new DAOException("Can´t save");
+			throw new DAOException("Can´t save",e);
 		}
 		
 		return result;
