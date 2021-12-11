@@ -71,7 +71,7 @@
                   <Insets left="20.0" right="20.0" />
                </GridPane.margin>
             </PasswordField>
-            <Button fx:id="Login" mnemonicParsing="false" prefHeight="30.0" prefWidth="110.0" style="-fx-background-radius: 30; -fx-background-color: #85C1E9;" text="LOGIN" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="4">
+            <Button fx:id="Login" mnemonicParsing="false" onAction="#signUpAuthor" prefHeight="30.0" prefWidth="110.0" style="-fx-background-radius: 30; -fx-background-color: #85C1E9;" text="LOGIN" textFill="WHITE" GridPane.halignment="CENTER" GridPane.rowIndex="4">
                <font>
                   <Font name="Microsoft YaHei Bold" size="14.0" />
                </font>
