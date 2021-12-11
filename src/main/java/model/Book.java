@@ -25,7 +25,9 @@ import javax.persistence.Table;
 	//consulta para buscar libros por el nombre
 	@NamedQuery(name="findByBookName",query="SELECT b FROM Book b WHERE b.title =:title"),
 	//consulta para traer todos los libros
-	@NamedQuery(name="ShowAllBooks",query = "SELECT b FROM Book b ")
+	@NamedQuery(name="ShowAllBooks",query = "SELECT b FROM Book b "),
+	//consulta para buscar libros por autor
+		@NamedQuery(name="FindBookByAuthor",query="SELECT b FROM Book b WHERE author.id=:author_id")
 	
 })
 public class Book {
