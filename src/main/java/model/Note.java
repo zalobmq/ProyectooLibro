@@ -38,6 +38,7 @@ public class Note implements Serializable {
 		
 		this.title = title;
 		this.text = text;
+		this.book_note = new Book();
 	}
 
 	public Note() {

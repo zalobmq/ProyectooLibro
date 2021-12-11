@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -41,6 +42,17 @@ public class Landscape {
 		this.name = name;
 		this.description = description;
 	}
+	
+	
+
+	public Landscape(String name, String description, List<Book> books_landscape) {
+		super();
+		this.name = name;
+		this.description = description;
+		this.books_landscape = new ArrayList<Book>();
+	}
+
+
 
 	public Landscape(String name, String description) {
 		super();
