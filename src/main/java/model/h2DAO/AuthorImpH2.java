@@ -15,7 +15,7 @@ import utils.PersistenceUnit;
 public class AuthorImpH2{
 	
 	public static EntityManager createEM() {
-		EntityManagerFactory emf=PersistenceUnit.getInstance();
+		EntityManagerFactory emf=PersistenceUnit.getInstance("aplicacionH2");
 		
 		return emf.createEntityManager();
 	}

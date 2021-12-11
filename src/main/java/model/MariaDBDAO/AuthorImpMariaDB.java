@@ -14,7 +14,7 @@ import utils.PersistenceUnit;
 public class AuthorImpMariaDB{
 	
 	public static EntityManager createEM() {
-		EntityManagerFactory emf=PersistenceUnit.getInstance();
+		EntityManagerFactory emf=PersistenceUnit.getInstance("aplicacionMariaDB");
 		
 		return emf.createEntityManager();
 	}
