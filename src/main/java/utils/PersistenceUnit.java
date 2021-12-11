@@ -8,12 +8,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name ="servers")
 public class PersistenceUnit {
-	//esto son pruebas
-	private String name;
-	
-	
 	private static EntityManagerFactory emf;
-	private static final String PUN="aplicacionMariaDB";
+	private static final String PUN="aplicacionH2";
 	
 	public static EntityManagerFactory getInstance() {
 		if(emf==null) {
@@ -26,37 +22,6 @@ public class PersistenceUnit {
 			emf=Persistence.createEntityManagerFactory(name);
 		}
 		return emf;
-	}
-
-	public PersistenceUnit() {
-		super();
-	}
-
-	public PersistenceUnit(String name) {
-		super();
-		this.name = name;
-		
-	}
-
-	/**
-	 * @return the name
-	 */
-	@XmlElement(name="name")
-	public String getName() {
-		return name;
-	}
-
-	/**
-	 * @param name the name to set
-	 */
-	public void setName(String name) {
-		this.name = name;
-	}
-	/**
-	 * @return the pun
-	 */
-	public static String getPun() {
-		return PUN;
 	}
 
 

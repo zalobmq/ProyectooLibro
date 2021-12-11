@@ -15,7 +15,7 @@ import utils.PersistenceUnit;
 public class AuthorImpH2{
 	
 	public static EntityManager createEM() {
-		EntityManagerFactory emf=PersistenceUnit.getInstance();
+		EntityManagerFactory emf=PersistenceUnit.getInstance("aplicacionH2");
 		
 		return emf.createEntityManager();
 	}
@@ -54,7 +54,7 @@ public class AuthorImpH2{
 			EntityManager em=createEM();
 			em.getTransaction().begin();
 			em.persist(a);
-			em.getTransaction().begin();
+			em.getTransaction().commit();
 			result=true;
 		} catch (Exception e) {
 			result=false;

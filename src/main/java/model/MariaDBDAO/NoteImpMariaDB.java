@@ -15,7 +15,7 @@ public class NoteImpMariaDB {
 	
 	
 	public static EntityManager createEM() {
-		EntityManagerFactory emf=PersistenceUnit.getInstance();
+		EntityManagerFactory emf=PersistenceUnit.getInstance("aplicacionMariaDB");
 		
 		return emf.createEntityManager();
 	}

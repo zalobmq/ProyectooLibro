@@ -17,6 +17,6 @@ public class xmlTest {
 	}
 	public static void loadTest() {
 		PersistenceUnit pu=WrapperForXML.loadFile();
-		System.out.println(pu.getName());
+		//System.out.println(pu.getName());
 	}
 }
