@@ -9,10 +9,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Chapter")
+@NamedQueries({
+	//consulta para buscar capítulos por el nombre
+	@NamedQuery(name="findByChapterName",query="SELECT c FROM Chapter c WHERE c.name =:name"),
+	//consulta para traer todos los capítulos
+	@NamedQuery(name="ShowAllChapters",query = "SELECT c FROM Chapter c "),
+	//consulta para buscar capítulos por libro
+	@NamedQuery(name="FindByChapterBook",query="SELECT c FROM Chapter c WHERE c.book_chapter.id=:Book_id")
+	
+})
 public class Chapter {
 	
 	@Id

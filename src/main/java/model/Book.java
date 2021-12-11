@@ -13,12 +13,21 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Book")
+@NamedQueries({
+	//consulta para buscar libros por el nombre
+	@NamedQuery(name="findByBookName",query="SELECT b FROM Book b WHERE b.title =:title"),
+	//consulta para traer todos los libros
+	@NamedQuery(name="ShowAllBooks",query = "SELECT b FROM Book b ")
+	
+})
 public class Book {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

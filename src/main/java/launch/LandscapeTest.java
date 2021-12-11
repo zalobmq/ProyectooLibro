@@ -1,5 +1,6 @@
 package launch;
 
+import model.Book;
 import model.Landscape;
 import model.IDAO.DAOException;
 import model.MariaDBDAO.LandscapeImpMariaDB;
@@ -9,7 +10,8 @@ public class LandscapeTest {
 
 	public static void main(String[] args) {
 
-		saveTestH2();
+		//saveTestH2();
+		getLandscapeByBook();
 	}
 	
 	static void saveTestH2() {
@@ -25,6 +27,17 @@ public class LandscapeTest {
 		Landscape l=new Landscape("Titulo","descripcion");
 		try {
 			LandscapeImpMariaDB.save(l);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	static void getLandscapeByBook() {
+		Book b=new Book();
+		b.setId(2L);
+		try {
+			System.out.println(LandscapeImpMariaDB.getLandscapeByBook(b));
 		} catch (DAOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

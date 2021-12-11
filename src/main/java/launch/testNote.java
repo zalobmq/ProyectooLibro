@@ -6,6 +6,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 import model.Author;
+import model.Book;
 import model.Note;
 import model.IDAO.DAOException;
 import model.MariaDBDAO.NoteImpMariaDB;
@@ -16,7 +17,8 @@ public class testNote {
 	public static void main(String[] args) {
 		//saveTestH2();
 		//test();
-		saveTestMariaDB();
+		//saveTestMariaDB();
+		getNotesByBookTest();
 	}
 	static void test(){
 		
@@ -44,6 +46,17 @@ public class testNote {
 		
 		try {
 			NoteImpMariaDB.save(n1);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	static void getNotesByBookTest() {
+		Book b=new Book();
+		b.setId(2L);
+		try {
+			System.out.println(NoteImpMariaDB.getNoteByBook(b).toString());
 		} catch (DAOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

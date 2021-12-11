@@ -51,7 +51,7 @@ public class AuthorImpMariaDB extends Author{
 	/*
 	 * Método que borra el autor especificado
 	 * @Param Author que se quiera borrar
-	 * @Return Booleano que devuelve verdadero si se ha borrado el autor y falso y no lo ha conseguido guardar
+	 * @Return Booleano que devuelve verdadero si se ha borrado el autor y falso si no lo ha conseguido guardar
 	 * */
 	public static boolean delete(Author a) throws DAOException {
 		boolean result=false;
@@ -99,8 +99,8 @@ public class AuthorImpMariaDB extends Author{
 
 	/*
 	 * Método que se usa para buscar un autor por id en la base de datos
-	 * @Param id del autor que se quiera buscar
-	 * @Return Autor que tiene la id correspendiente en caso de que se haya encontrado o id=-1 si el autor no se ha encontrado
+	 * @Param int id del autor que se quiera buscar
+	 * @Return Author que tiene la id correspendiente en caso de que se haya encontrado o id=-1 si el autor no se ha encontrado
 	 * 
 	 * */
 	public static Author getByID(long id) throws DAOException {
@@ -112,8 +112,8 @@ public class AuthorImpMariaDB extends Author{
 
 	/*
 	 * Método que se usa para buscar autores por el nombre
-	 * @Param String con el nombre del autor que se desa buscar
-	 * @Return List<Author> con los autores que coiincidan con dicho nombre, en caso de no encontrar ninguno devuelve una lista vacia
+	 * @Param String name con el nombre del autor que se desa buscar
+	 * @Return List<Author> con los autores que coincidan con dicho nombre, en caso de no encontrar ninguno devuelve una lista vacia
 	 * */
 	public static List<Author> getByName(String name) throws DAOException {
 		List<Author> result=new ArrayList<Author>();
