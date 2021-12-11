@@ -21,6 +21,8 @@ public class Chapter {
 	private Long id;
 	@Column(name = "NAME")
 	private String name;
+	@Column(name = "TEXT")
+	private String text;
 	@Column(name = "CHAPTERNUMBER")
 	private int chapterNumber;
 	@Column(name = "FINISH")
@@ -29,26 +31,29 @@ public class Chapter {
 	@JoinColumn(name = "Book_id")
 	private Book book_chapter;
 
-	public Chapter(Long id, String name, int chapterNumber, boolean finish) {
+	public Chapter(Long id, String name,String text, int chapterNumber, boolean finish) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.text = text;
 		this.chapterNumber = chapterNumber;
 		this.finish = finish;
 	}
 
 
-	public Chapter(String name, int chapterNumber, boolean finish, Book book_chapter) {
+	public Chapter(String name, String text, int chapterNumber, boolean finish, Book book_chapter) {
 		super();
 		this.name = name;
+		this.text = name;
 		this.chapterNumber = chapterNumber;
 		this.finish = finish;
 		this.book_chapter = book_chapter;
 	}
 	
-	public Chapter(String name, int chapterNumber, boolean finish) {
+	public Chapter(String name, String text, int chapterNumber, boolean finish) {
 		super();
 		this.name = name;
+		this.text = text;
 		this.chapterNumber = chapterNumber;
 		this.finish = finish;
 		this.book_chapter = new Book();
@@ -59,6 +64,7 @@ public class Chapter {
 		super();
 		this.id = -1L;
 		this.name = "Not found";
+		this.text = "Not found";
 		this.chapterNumber = 0;
 		this.finish = true;
 	}
