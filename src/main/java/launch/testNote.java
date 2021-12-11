@@ -16,11 +16,11 @@ public class testNote {
 	public static void main(String[] args) {
 		//saveTestH2();
 		//test();
-		saveTestMariaDB();
+		//saveTestMariaDB();
 	}
 	static void test(){
 		
-		emf=Persistence.createEntityManagerFactory("aplicacionMariaDB");
+		emf=Persistence.createEntityManagerFactory("aplicacionH2");
 		em=emf.createEntityManager();
 		em.getTransaction().begin();
 		Note n1 = new Note();
