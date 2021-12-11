@@ -14,7 +14,7 @@ public class AuthorMariaDBTest {
 		//saveTestH2();
 		//saveTestMariaDB();
 		//getByEmailMariaDB();
-		getByNameMariaDB();
+		//getByNameMariaDB();
 		
 
 	}
