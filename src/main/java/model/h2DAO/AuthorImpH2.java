@@ -147,7 +147,7 @@ public class AuthorImpH2 {
 		EntityManager em = createEM();
 		try {
 			em.getTransaction().begin();
-			TypedQuery<Author> q = em.createNamedQuery("findByEmailH2", Author.class);
+			TypedQuery<Author> q = em.createNamedQuery("findByEmail", Author.class);
 			q.setParameter("email", email);
 			result = q.getSingleResult();
 			em.getTransaction().commit();

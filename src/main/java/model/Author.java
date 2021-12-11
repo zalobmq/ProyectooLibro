@@ -23,8 +23,6 @@ import javax.persistence.Table;
 	//se le pone el nombre que se quiera y en la consulta lo que se quiera hacer
 	@NamedQuery(name="findByName",query="SELECT a FROM Author a WHERE a.name=:name"),
 	@NamedQuery(name="findByEmail",query="SELECT a FROM Author a WHERE a.email=:email"),
-	@NamedQuery(name="findByNameH2",query="SELECT a FROM AUTHOR as a where a.nombre = 'nombre'"),
-	@NamedQuery(name="findByEmailH2",query="SELECT a FROM AUTHOR as a where a.email = 'email'"),
 })
 
 public class Author {
