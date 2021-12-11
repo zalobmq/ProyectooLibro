@@ -9,18 +9,28 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Author")
+
+
+@NamedQueries({
+	//se le pone el nombre que se quiera y en la consulta lo que se quiera hacer
+	@NamedQuery(name="findByName",query="SELECT a FROM Author a WHERE a.name=:name"),
+	@NamedQuery(name="findByEmail",query="SELECT a FROM Author a WHERE a.email=:email")
+})
+
 public class Author {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
 	private Long id;
 	@Column(name = "NAME")
-	private String name;
+	protected String name;
 	@Column(name = "SURNAME")
 	private String surname;
 	@Column(name = "PASSWORD")
