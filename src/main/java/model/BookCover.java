@@ -38,8 +38,8 @@ public class BookCover {
 	public BookCover() {
 		super();
 		this.id = -1L;
-		this.image = null;
-		this.book = null;
+		this.image = "not found";
+		this.book = new Book();
 	}
 
 	public Long getId() {
