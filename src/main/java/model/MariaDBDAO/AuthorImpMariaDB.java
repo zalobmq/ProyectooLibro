@@ -51,15 +51,18 @@ public class AuthorImpMariaDB{
 
 	public static boolean save(Author a) throws DAOException {
 		boolean result=false;
+		EntityManager em=createEM();
 		try {
-			EntityManager em=createEM();
 			em.getTransaction().begin();
 			em.persist(a);
-			em.getTransaction().begin();
+			em.getTransaction().commit();
 			result=true;
 		} catch (Exception e) {
 			result=false;
 			throw new DAOException("Can´t save",e);
+		}finally {
+			//em.clear();
+			//em.close();
 		}
 		
 		return result;

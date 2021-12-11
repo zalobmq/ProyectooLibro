@@ -14,18 +14,19 @@ public class testNote {
 	private static EntityManager em;
 	private static EntityManagerFactory emf;
 	public static void main(String[] args) {
-		saveTestH2();
+		//saveTestH2();
+		//test();
 		saveTestMariaDB();
-
 	}
 	static void test(){
-		Author a = new Author();
-		System.out.println(a.toString());
+		
 		emf=Persistence.createEntityManagerFactory("aplicacionMariaDB");
 		em=emf.createEntityManager();
 		em.getTransaction().begin();
 		Note n1 = new Note();
+		Note n2 = new Note();
 		em.persist(n1);
+		em.persist(n2);
 		em.getTransaction().commit();
 	}
 	
@@ -48,6 +49,8 @@ public class testNote {
 			e.printStackTrace();
 		}
 	}
+	
+	
 	
 	
 	

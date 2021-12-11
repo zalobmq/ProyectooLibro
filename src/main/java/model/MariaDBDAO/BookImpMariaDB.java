@@ -51,7 +51,7 @@ public class BookImpMariaDB {
 			EntityManager em=createEM();
 			em.getTransaction().begin();
 			em.persist(b);
-			em.getTransaction().begin();
+			em.getTransaction().commit();
 			result=true;
 		} catch (Exception e) {
 			result=false;

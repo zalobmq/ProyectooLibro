@@ -53,13 +53,13 @@ public class NoteImpH2 {
 		try {
 			EntityManager em=createEM();
 			em.getTransaction().begin();
-			em.remove(n);
+			em.persist(n);
 			em.getTransaction().commit();
 			result =true;
 			
 		} catch (Exception e) {
 			result=false;
-			throw new DAOException("Can´t delete",e);
+			throw new DAOException("Can´t save",e);
 		}
 		return result;
 	}

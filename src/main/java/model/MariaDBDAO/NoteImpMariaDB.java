@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
+import javax.persistence.Persistence;
 
 import model.Note;
 import model.IDAO.DAOException;
@@ -15,7 +16,7 @@ public class NoteImpMariaDB {
 	
 	
 	public static EntityManager createEM() {
-		EntityManagerFactory emf=PersistenceUnit.getInstance();
+		EntityManagerFactory emf=PersistenceUnit.getInstance("aplicacionMariaDB");
 		
 		return emf.createEntityManager();
 	}
@@ -50,16 +51,23 @@ public class NoteImpMariaDB {
 
 	public static boolean save(Note n) throws DAOException {
 		boolean result=false;
+		EntityManager em;
+		EntityManagerFactory emf;
+		emf=Persistence.createEntityManagerFactory("aplicacionMariaDB");
+		em=emf.createEntityManager();
 		try {
-			EntityManager em=createEM();
 			em.getTransaction().begin();
-			em.remove(n);
+			em.persist(n);
 			em.getTransaction().commit();
+			
 			result =true;
 			
 		} catch (Exception e) {
 			result=false;
-			throw new DAOException("Can´t delete",e);
+			throw new DAOException("Can´t save",e);
+		}finally {
+			
+			
 		}
 		return result;
 	}
