@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,7 +22,9 @@ import javax.persistence.Table;
 @NamedQueries({
 	//se le pone el nombre que se quiera y en la consulta lo que se quiera hacer
 	@NamedQuery(name="findByName",query="SELECT a FROM Author a WHERE a.name=:name"),
-	@NamedQuery(name="findByEmail",query="SELECT a FROM Author a WHERE a.email=:email")
+	@NamedQuery(name="findByEmail",query="SELECT a FROM Author a WHERE a.email=:email"),
+	@NamedQuery(name="findByNameH2",query="SELECT a FROM AUTHOR as a where a.nombre = 'nombre'"),
+	@NamedQuery(name="findByEmailH2",query="SELECT a FROM AUTHOR as a where a.email = 'email'"),
 })
 
 public class Author {
@@ -37,7 +40,7 @@ public class Author {
 	private String password;
 	@Column(name = "EMAIL")
 	private String email;
-	@OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Book> books_author;
 
 	public Author(Long id, String name, String surname, String password, String email, List<Book> books_author) {

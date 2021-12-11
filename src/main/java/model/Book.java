@@ -40,7 +40,7 @@ public class Book {
 	@Column(name = "GENRE")
 	private String genre;
 	@JoinColumn(name = "book")
-	@OneToOne(fetch = FetchType.LAZY)
+	@OneToOne(fetch = FetchType.EAGER)
 	private BookCover bookcover;
 
 	@OneToMany(mappedBy = "book_note", cascade = CascadeType.ALL, orphanRemoval = true)
