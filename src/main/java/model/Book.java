@@ -89,6 +89,15 @@ public class Book {
 
 	public Book() {
 		super();
+		this.title = "Not found";
+		this.sypnosis = "Not found";
+		this.genre = "Not found";
+		this.chapters = new ArrayList<Chapter>();
+		this.notes = new ArrayList<Note>();
+		this.landscapes = new ArrayList<Landscape>();
+		this.characters = new ArrayList<Character>();
+		this.author = new Author();
+		this.saga = new Saga();
 	}
 
 	public Long getId() {
