@@ -8,14 +8,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.Table;
 
 @Entity
-@Table(name = "Landscape")
-public class Landscape {
+@Table(name = "Characters")
+public class Character {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
@@ -24,35 +24,30 @@ public class Landscape {
 	private String name;
 	@Column(name = "DESCRIPTION")
 	private String description;
-	  @ManyToMany(cascade = {
-	            CascadeType.ALL,
-	            CascadeType.ALL
-	    })
-	    @JoinTable(
-	            name = "Landscape_Book",
-	            joinColumns = {@JoinColumn(name = "Landscape_id")},
-	            inverseJoinColumns = {@JoinColumn(name = "Book_id")}
-	    )	
-	private List<Book> books_landscape;
-	
-	public Landscape(Long id, String name, String description) {
+	@Column(name = "DEATH")
+	private boolean death;
+	@ManyToMany(cascade = { CascadeType.ALL, CascadeType.ALL })
+	@JoinTable(name = "character_book", joinColumns = { @JoinColumn(name = "Character_id") }, inverseJoinColumns = {
+			@JoinColumn(name = "Book_id") })
+	private List<Book> books_character;
+
+	public Character(Long id, String name, String description, boolean death) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
+		this.death = death;
 	}
 
-	public Landscape(String name, String description) {
+	public Character(String name, String description, boolean death) {
 		super();
 		this.name = name;
 		this.description = description;
+		this.death = death;
 	}
 
-	public Landscape() {
+	public Character() {
 		super();
-		this.id = -1L;
-		this.name = "Not found";
-		this.description = "Not found";
 	}
 
 	public Long getId() {
@@ -79,8 +74,17 @@ public class Landscape {
 		this.description = description;
 	}
 
+	public boolean isDeath() {
+		return death;
+	}
+
+	public void setDeath(boolean death) {
+		this.death = death;
+	}
+
 	@Override
 	public String toString() {
-		return "Landscape [id=" + id + ", name=" + name + ", description=" + description + "]";
+		return "Character [id=" + id + ", name=" + name + ", description=" + description + ", death=" + death + "]";
 	}
+
 }

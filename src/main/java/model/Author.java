@@ -2,11 +2,13 @@ package model;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,27 +26,27 @@ public class Author {
 	private String password;
 	@Column(name = "EMAIL")
 	private String email;
-	@Column(name = "BOOK")
-	private List<Book> books;
+	@OneToMany(mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
+	private List<Book> books_author;
 
-	public Author(Long id, String name, String surname, String password, String email, List<Book> books) {
+	public Author(Long id, String name, String surname, String password, String email, List<Book> books_author) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
 		this.password = password;
 		this.email = email;
-		this.books = books;
+		this.books_author = books_author;
 	}
 
-	public Author(String name, String surname, String password, String email, List<Book> books) {
+	public Author(String name, String surname, String password, String email, List<Book> books_author) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.surname = surname;
 		this.password = password;
 		this.email = email;
-		this.books = books;
+		this.books_author = books_author;
 	}
 
 	public Author() {
@@ -54,7 +56,7 @@ public class Author {
 		this.surname = "Not found";
 		this.password = "Not found";
 		this.email = null;
-		this.books = null;
+		this.books_author = null;
 	}
 
 	public Long getId() {
@@ -97,18 +99,19 @@ public class Author {
 		this.email = email;
 	}
 
-	public List<Book> getBooks() {
-		return books;
+	public List<Book> getbooks_author() {
+		return books_author;
 	}
 
-	public void setBooks(List<Book> books) {
-		this.books = books;
+	public void setbooks_author(List<Book> books_author) {
+		this.books_author = books_author;
 	}
 
 	@Override
 	public String toString() {
 		return "Author [id=" + id + ", name=" + name + ", surname=" + surname + ", password=" + password + ", email="
-				+ email + ", books=" + books + "]";
+				+ email + ", books_author=" + books_author + "]";
 	}
 
 }
+

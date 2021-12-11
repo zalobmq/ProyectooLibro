@@ -1,10 +1,13 @@
 package model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -16,6 +19,7 @@ public class BookCover {
 	private Long id;
 	@Column(name = "IMAGE")
 	private String image;
+	@OneToOne(mappedBy = "bookcover", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
 	private Book book;
 
 	public BookCover(Long id, String image, Book book) {
