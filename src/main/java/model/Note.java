@@ -9,10 +9,21 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Note")
+@NamedQueries({
+	//consulta para buscar capítulos por el nombre
+	@NamedQuery(name="findByNoterName",query="SELECT n FROM Note n WHERE n.title =:title"),
+	//consulta para traer todos los capítulos
+	@NamedQuery(name="ShowAllNotes",query = "SELECT n FROM Note n "),
+	//consulta para buscar capítulos por libro
+	@NamedQuery(name="FindByNotesBook",query="SELECT n FROM Note n WHERE n.book_note.id=:Book_id")
+	
+})
 public class Note implements Serializable {
 	private static final long serialVersionUID = 1L;
 	@Id

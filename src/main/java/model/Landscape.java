@@ -12,10 +12,21 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Landscape")
+@NamedQueries({
+	//consulta para buscar paisajes por el nombre
+	@NamedQuery(name="findByLandscapeName",query="SELECT l FROM Landscape l WHERE l.name =:name"),
+	//consulta para traer todos los paisajes
+	@NamedQuery(name="ShowAllLandscape",query = "SELECT l FROM Landscape l "),
+	//consulta para buscar paisajes por libro
+	@NamedQuery(name="FindByLandscapesBook",query="SELECT l FROM Landscape l WHERE l.books_landscape.book.id=:Book_id")
+	
+})
 public class Landscape {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
