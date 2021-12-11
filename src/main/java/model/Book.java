@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -32,15 +33,14 @@ public class Book {
 	@JoinColumn(name = "book")
 	@OneToOne(fetch = FetchType.LAZY)
 	private BookCover bookcover;
-	
-	
+
 	@OneToMany(mappedBy = "book_note", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Note> notes;
 	@OneToMany(mappedBy = "book_chapter", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Chapter> chapters;
-    @ManyToMany(mappedBy = "books_landscape")
+	@ManyToMany(mappedBy = "books_landscape")
 	private List<Landscape> landscapes;
-    @ManyToMany(mappedBy = "books_character")
+	@ManyToMany(mappedBy = "books_character")
 	private List<Character> characters;
 	@ManyToOne()
 	@JoinColumn(name = "books_author")
@@ -72,6 +72,19 @@ public class Book {
 		this.notes = notes;
 		this.landscapes = landscapes;
 		this.characters = characters;
+	}
+
+	public Book(String title, String sypnosis, String genre) {
+		super();
+		this.title = title;
+		this.sypnosis = sypnosis;
+		this.genre = genre;
+		this.chapters = new ArrayList<Chapter>();
+		this.notes = new ArrayList<Note>();
+		this.landscapes = new ArrayList<Landscape>();
+		this.characters = new ArrayList<Character>();
+		this.author = new Author();
+		this.saga = new Saga();
 	}
 
 	public Book() {

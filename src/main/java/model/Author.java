@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -41,12 +42,20 @@ public class Author {
 
 	public Author(String name, String surname, String password, String email, List<Book> books_author) {
 		super();
-		this.id = id;
 		this.name = name;
 		this.surname = surname;
 		this.password = password;
 		this.email = email;
 		this.books_author = books_author;
+	}
+
+	public Author(String name, String surname, String password, String email) {
+		super();
+		this.name = name;
+		this.surname = surname;
+		this.password = password;
+		this.email = email;
+		this.books_author = new ArrayList<Book>();
 	}
 
 	public Author() {
@@ -55,8 +64,8 @@ public class Author {
 		this.name = "Not found";
 		this.surname = "Not found";
 		this.password = "Not found";
-		this.email = null;
-		this.books_author = null;
+		this.email = "Not found";
+		this.books_author = new ArrayList<Book>();
 	}
 
 	public Long getId() {
@@ -114,4 +123,3 @@ public class Author {
 	}
 
 }
-

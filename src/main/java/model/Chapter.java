@@ -37,12 +37,23 @@ public class Chapter {
 		this.finish = finish;
 	}
 
-	public Chapter(String name, int chapterNumber, boolean finish, List<Note> notes) {
+
+	public Chapter(String name, int chapterNumber, boolean finish, Book book_chapter) {
 		super();
 		this.name = name;
 		this.chapterNumber = chapterNumber;
 		this.finish = finish;
+		this.book_chapter = book_chapter;
 	}
+	
+	public Chapter(String name, int chapterNumber, boolean finish) {
+		super();
+		this.name = name;
+		this.chapterNumber = chapterNumber;
+		this.finish = finish;
+		this.book_chapter = new Book();
+	}
+
 
 	public Chapter() {
 		super();

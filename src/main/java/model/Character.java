@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -30,17 +31,29 @@ public class Character {
 	@JoinTable(name = "character_book", joinColumns = { @JoinColumn(name = "Character_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "Book_id") })
 	private List<Book> books_character;
+	
+	
 
-	public Character(Long id, String name, String description, boolean death) {
+	public Character(Long id, String name, String description, boolean death, List<Book> books_character) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.death = death;
+		this.books_character = books_character;
 	}
-
+	
 	public Character(String name, String description, boolean death) {
 		super();
+		this.name = name;
+		this.description = description;
+		this.death = death;
+		this.books_character = new ArrayList<Book>();
+	}
+
+	public Character(Long id, String name, String description, boolean death) {
+		super();
+		this.id = id;
 		this.name = name;
 		this.description = description;
 		this.death = death;

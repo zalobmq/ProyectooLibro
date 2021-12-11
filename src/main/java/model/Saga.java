@@ -1,5 +1,6 @@
 package model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -36,6 +37,11 @@ public class Saga {
 		this.books_saga = books_saga;
 	}
 
+	public Saga(String name) {
+		super();
+		this.name = name;
+		this.books_saga = new ArrayList<Book>();
+	}
 	public Saga() {
 		super();
 		this.id = -1L;
