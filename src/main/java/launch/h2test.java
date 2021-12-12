@@ -3,17 +3,23 @@ package launch;
 import model.Author;
 import model.Book;
 import model.Chapter;
+import model.Landscape;
+import model.Note;
 import model.IDAO.DAOException;
 import model.MariaDBDAO.AuthorImpMariaDB;
 import model.h2DAO.AuthorImpH2;
 import model.h2DAO.BookImpH2;
 import model.h2DAO.ChapterImpH2;
+import model.h2DAO.LandscapeImpH2;
+import model.h2DAO.NoteImpH2;
 
 public class h2test {
 	
 	public static void main(String[] args) {
 		//saveBook();
-		savechapter();
+		//savechapter();
+		//saveNote();
+		//saveLandscape();
 	}
 	static void getbymailh2() {
 
@@ -71,6 +77,31 @@ public class h2test {
 		try {
 		
 			ChapterImpH2.save(c);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	static void saveLandscape() {
+		Landscape l = new Landscape();
+		
+	
+		try {
+		
+			LandscapeImpH2.save(l);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	static void saveNote() {
+		Note n = new Note();
+		
+	
+		try {
+		NoteImpH2.save(n);
 		} catch (DAOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
