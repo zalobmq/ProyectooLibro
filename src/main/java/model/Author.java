@@ -38,6 +38,7 @@ public class Author {
 	private String password;
 	@Column(name = "EMAIL")
 	private String email;
+	
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "author", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Book> books_author;
 

@@ -25,7 +25,7 @@ import javax.persistence.Table;
 	//consulta para traer todos los paisajes
 	@NamedQuery(name="ShowAllLandscape",query = "SELECT l FROM Landscape l "),
 	//consulta para buscar paisajes por libro
-	//@NamedQuery(name="FindByLandscapesBook",query="SELECT l FROM Landscape l, l.books_landscape lb  where lb.id= ")
+	//@NamedQuery(name="FindByLandscapesBook",query="SELECT l.Landscape_id FROM books_landscape l,   l.Book_id=:Book_id ")
 	
 })
 public class Landscape {
