@@ -25,7 +25,8 @@
 			<property name="javax.persistence.jdbc.password" value="" />
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MariaDBDialect" />
 			<property name="hibernate.hbm2ddl.auto" value="validate" />
-
+			<!-- Para que no de el error de failed to lazily initialize-->
+			<property name="hibernate.enable_lazy_load_no_trans"  value="true"/>
 			<property name="hibernate.show_sql" value="true" />
 		</properties>
 	</persistence-unit>
