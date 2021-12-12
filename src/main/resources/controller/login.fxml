@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" pickOnBounds="false" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2E4053;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #2E4053;" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.LoginController">
    <children>
       <GridPane prefHeight="400.0" prefWidth="600.0">
         <columnConstraints>
@@ -108,8 +108,19 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <Button mnemonicParsing="false" onAction="#Login" text="Sign in" GridPane.halignment="CENTER" />
-                              <Button mnemonicParsing="false" onAction="#signUp" text="Sign Up" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                              <Button fx:id="loginID" mnemonicParsing="false" onAction="#Login" prefHeight="30.0" prefWidth="94.0" style="-fx-background-radius: 30; -fx-background-color: #85C1E9;" text="LOGIN" textFill="WHITE" GridPane.halignment="CENTER">
+                                 <font>
+                                    <Font name="Microsoft YaHei Bold" size="14.0" />
+                                 </font>
+                              </Button>
+                              <Button fx:id="SignUpID" mnemonicParsing="false" onAction="#signUp" prefHeight="26.0" prefWidth="82.0" style="-fx-background-radius: 30; -fx-background-color: white;" text="SIGN UP" textFill="#2e4053" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.valignment="CENTER">
+                                 <font>
+                                    <Font name="Microsoft YaHei Bold" size="13.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets />
+                                 </GridPane.margin>
+                              </Button>
                            </children>
                         </GridPane>
                      </children>
