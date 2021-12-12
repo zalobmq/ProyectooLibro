@@ -53,7 +53,7 @@ public class Book {
 	private List<Landscape> landscapes;
 	@ManyToMany(mappedBy = "books_character")
 	private List<Character> characters;
-	@ManyToOne()
+	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "books_author")
 	private Author author;
 	@ManyToOne()
@@ -203,7 +203,7 @@ public class Book {
 	public String toString() {
 		return "Book [id=" + id + ", title=" + title + ", sypnosis=" + sypnosis + ", genre=" + genre + ", bookcover="
 				+ bookcover + ", notes=" + notes + ", chapters=" + chapters + ", landscapes=" + landscapes
-				+ ", characters=" + characters + ", author=" + author + ", saga=" + saga + "]";
+				+ ", characters=" + characters + ", author=" + author.getName() + ", saga=" + saga + "]";
 	}
 
 }

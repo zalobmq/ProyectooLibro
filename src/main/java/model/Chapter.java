@@ -129,7 +129,7 @@ public class Chapter {
 	@Override
 	public String toString() {
 		return "Chapter [id=" + id + ", name=" + name + ", text=" + text + ", chapterNumber=" + chapterNumber
-				+ ", finish=" + finish + ", book_chapter=" + book_chapter + "]";
+				+ ", finish=" + finish + ", book_chapter=" + book_chapter.getTitle() + "]";
 	}
 
 
