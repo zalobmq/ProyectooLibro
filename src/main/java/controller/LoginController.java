@@ -34,7 +34,24 @@ public class LoginController {
 	}
 	
 	/* METODOS */
-	
+	//Crear un Autor con el que me he registrado
+		public Author newAuthor() {
+			Author result=new Author();
+			try {
+				Author a = AuthorImpMariaDB.getByEmail(EmailID.getText());
+				result.setId(a.getId());
+				result.setName(a.getName());
+				result.setSurname(a.getSurname());
+				result.setEmail(a.getEmail());
+				result.setPassword(a.getPassword());
+				result.setbooks_author(a.getbooks_author());
+				
+			} catch (DAOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			return result;
+		}
 	//Comprobar que el usuario introducido esta registrado
 	
 	public void Login() {
@@ -47,7 +64,9 @@ public class LoginController {
 					PasswordID.getText().equals(a.getPassword())) {
 					
 					try {
+						MainScreenController.setAuthor(a);
 						App.loadScene(new Stage(), "MainScreen", "MAIN");
+						
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();

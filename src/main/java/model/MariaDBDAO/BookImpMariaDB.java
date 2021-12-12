@@ -135,7 +135,7 @@ public class BookImpMariaDB {
 			throw new DAOException("Can´t find books",e);
 		}finally {
 			//en La carga lazy no se debe cerrar la conexion
-			//em.close();
+			em.close();
 		}
 		return result;
 	}
