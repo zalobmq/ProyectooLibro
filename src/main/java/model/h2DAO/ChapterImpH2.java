@@ -20,7 +20,7 @@ public class ChapterImpH2 {
 	 * @Return emf.createEntityManager();
 	 * */
 	public static EntityManager createEM() {
-		EntityManagerFactory emf = PersistenceUnit.getInstance();
+		EntityManagerFactory emf = PersistenceUnit.getInstance("aplicacionH2");
 
 		return emf.createEntityManager();
 	}

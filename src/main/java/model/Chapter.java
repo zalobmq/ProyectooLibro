@@ -16,16 +16,16 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Chapter")
 @NamedQueries({
-	//consulta para buscar capítulos por el nombre
-	@NamedQuery(name="findByChapterName",query="SELECT c FROM Chapter c WHERE c.name =:name"),
-	//consulta para traer todos los capítulos
-	@NamedQuery(name="ShowAllChapters",query = "SELECT c FROM Chapter c "),
-	//consulta para buscar capítulos por libro
-	@NamedQuery(name="FindByChapterBook",query="SELECT c FROM Chapter c WHERE c.book_chapter.id=:Book_id")
-	
+		// consulta para buscar capítulos por el nombre
+		@NamedQuery(name = "findByChapterName", query = "SELECT c FROM Chapter c WHERE c.name =:name"),
+		// consulta para traer todos los capítulos
+		@NamedQuery(name = "ShowAllChapters", query = "SELECT c FROM Chapter c "),
+		// consulta para buscar capítulos por libro
+		@NamedQuery(name = "FindByChapterBook", query = "SELECT c FROM Chapter c WHERE c.book_chapter.id=:Book_id")
+
 })
 public class Chapter {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
@@ -42,7 +42,7 @@ public class Chapter {
 	@JoinColumn(name = "Book_id")
 	private Book book_chapter;
 
-	public Chapter(Long id, String name,String text, int chapterNumber, boolean finish) {
+	public Chapter(Long id, String name, String text, int chapterNumber, boolean finish) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -50,7 +50,6 @@ public class Chapter {
 		this.chapterNumber = chapterNumber;
 		this.finish = finish;
 	}
-
 
 	public Chapter(String name, String text, int chapterNumber, boolean finish, Book book_chapter) {
 		super();
@@ -60,7 +59,7 @@ public class Chapter {
 		this.finish = finish;
 		this.book_chapter = book_chapter;
 	}
-	
+
 	public Chapter(String name, String text, int chapterNumber, boolean finish) {
 		super();
 		this.name = name;
@@ -69,7 +68,6 @@ public class Chapter {
 		this.finish = finish;
 		this.book_chapter = new Book();
 	}
-
 
 	public Chapter() {
 		super();
@@ -112,10 +110,28 @@ public class Chapter {
 		this.finish = finish;
 	}
 
+	public String getText() {
+		return text;
+	}
+
+	public void setText(String text) {
+		this.text = text;
+	}
+
+	public Book getBook_chapter() {
+		return book_chapter;
+	}
+
+	public void setBook_chapter(Book book_chapter) {
+		this.book_chapter = book_chapter;
+	}
+
 	@Override
 	public String toString() {
-		return "Chapter [id=" + id + ", name=" + name + ", chapterNumber=" + chapterNumber + ", finish=" + finish
-				+ ", notes=" + "]";
+		return "Chapter [id=" + id + ", name=" + name + ", text=" + text + ", chapterNumber=" + chapterNumber
+				+ ", finish=" + finish + ", book_chapter=" + book_chapter + "]";
 	}
+
+
 
 }

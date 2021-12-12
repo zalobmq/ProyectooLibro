@@ -6,12 +6,13 @@ import model.Book;
 import model.IDAO.DAOException;
 import model.MariaDBDAO.BookImpMariaDB;
 import model.MariaDBDAO.BookcoverImpMariaDB;
+import model.h2DAO.BookImpH2;
 
 public class BookTest {
 
 	public static void main(String[] args) {
-		//saveTest();
-		getAllTest();
+		saveTest();
+		//getAllTest();
 
 	}
 	static void saveTest() {
