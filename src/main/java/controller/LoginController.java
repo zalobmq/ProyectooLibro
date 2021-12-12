@@ -59,12 +59,15 @@ public class LoginController {
 		if(EmailID.getText().length() > 0 && PasswordID.getText().length() > 0) {
 		try {
 			Author a = AuthorImpMariaDB.getByEmail(EmailID.getText());
+			System.out.println("AUTOR :   "+a.toString());
 		if(a.getId() != -1) {
 				if (EmailID.getText().equals(a.getEmail()) &&
 					PasswordID.getText().equals(a.getPassword())) {
 					
 					try {
+						
 						MainScreenController.setAuthor(a);
+						NewBookController.setAuthor(a);
 						App.loadScene(new Stage(), "MainScreen", "MAIN");
 						
 					} catch (IOException e) {
