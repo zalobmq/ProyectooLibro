@@ -13,12 +13,21 @@ import utils.PersistenceUnit;
 
 public class SagaImpMariaDB {
 	
+	
+	/*
+	 * Método que devuelve emf
+	 * @Return emf.createEntityManager();
+	 * */
 	public static EntityManager createEM() {
-		EntityManagerFactory emf=PersistenceUnit.getInstance();
+		EntityManagerFactory emf=PersistenceUnit.getInstance("aplicacionMariaDB");
 		
 		return emf.createEntityManager();
 	}
 	
+	/*
+	 * Método que crea el objeto para realizar las transacciones
+	 * @Return em.getTransaction() 
+	 * */
 	public static EntityTransaction beginsession() {
 		EntityManager em=createEM();
 		return em.getTransaction();

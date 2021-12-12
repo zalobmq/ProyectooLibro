@@ -13,9 +13,20 @@ import javax.persistence.Table;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 
 @Entity
 @Table(name = "Characters")
+@NamedQueries({
+	//consulta para buscar personajes por el nombre
+	@NamedQuery(name="findByCharacterName",query="SELECT c FROM Character c WHERE c.name =:name"),
+	//consulta para traer todos los personajes
+	@NamedQuery(name="ShowAllCharacter",query = "SELECT c FROM Character c "),
+	//consulta para buscar paisajes por libro
+	@NamedQuery(name="FindByCharacterBook",query="SELECT c FROM Character c JOIN c.books_character b on  b.id=:Book_id ")
+	
+})
 public class Character {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

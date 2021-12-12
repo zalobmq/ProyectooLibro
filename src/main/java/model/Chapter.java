@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -24,8 +25,8 @@ import javax.persistence.Table;
 		@NamedQuery(name = "FindByChapterBook", query = "SELECT c FROM Chapter c WHERE c.book_chapter.id=:Book_id")
 
 })
-public class Chapter {
-
+public class Chapter implements Serializable {
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")

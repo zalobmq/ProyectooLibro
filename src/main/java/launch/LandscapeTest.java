@@ -11,7 +11,8 @@ public class LandscapeTest {
 	public static void main(String[] args) {
 
 		//saveTestH2();
-		getLandscapeByBook();
+		//saveTestMariaDb();
+		//getLandscapeByBook();
 	}
 	
 	static void saveTestH2() {

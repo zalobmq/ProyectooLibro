@@ -16,11 +16,11 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Note")
 @NamedQueries({
-	//consulta para buscar capítulos por el nombre
+	//consulta para buscar notas por el nombre
 	@NamedQuery(name="findByNoterName",query="SELECT n FROM Note n WHERE n.title =:title"),
-	//consulta para traer todos los capítulos
+	//consulta para traer todos las notas
 	@NamedQuery(name="ShowAllNotes",query = "SELECT n FROM Note n "),
-	//consulta para buscar capítulos por libro
+	//consulta para buscar notas por libro
 	@NamedQuery(name="FindByNotesBook",query="SELECT n FROM Note n WHERE n.book_note.id=:Book_id")
 	
 })

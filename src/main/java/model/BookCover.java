@@ -7,11 +7,20 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "BookCover")
+@NamedQueries({
+	//consulta para traer todos las portadas
+	@NamedQuery(name="ShowAllBookcover",query = "SELECT b FROM BookCover b "),
+	//consulta para buscar notas por libro
+	@NamedQuery(name="FindByBookcoverBook",query="SELECT b FROM BookCover b WHERE b.book.id=:Book_id")
+	
+})
 public class BookCover {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +26,8 @@ import javax.persistence.Table;
 	@NamedQuery(name="findByEmail",query="SELECT a FROM Author a WHERE a.email=:email"),
 })
 
-public class Author {
+public class Author implements Serializable {
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
