@@ -84,9 +84,9 @@ public class LandscapeImpMariaDB {
 		return result;
 	}
 	/*
-	 * Método que se usa para buscar una nota por id en la base de datos
+	 * Método que se usa para buscar un paisaje por id en la base de datos
 	 * @Param int id de la nota que se quiera buscar
-	 * @Return Note que tiene la id correspendiente en caso de que se haya encontrado o id=-1 si la nota no se ha encontrado
+	 * @Return Landscape que tiene la id correspendiente en caso de que se haya encontrado o id=-1 si el paisaje no se ha encontrado
 	 * 
 	 * */
 	public static Landscape getByID(long id) throws DAOException {
@@ -97,7 +97,7 @@ public class LandscapeImpMariaDB {
 
 	/*
 	 * Método que se usa para buscar notas por el titulo
-	 * @Param String title con el titulo de la nota que se desa buscar
+	 * @Param String name con el nombre de la nota que se desa buscar
 	 * @Return List<Note> con las notas que coincidan con dicho nombre, en caso de no encontrar ninguno devuelve una lista vacia
 	 * */
 	public static List<Landscape> getByName(String name) throws DAOException {
@@ -107,9 +107,9 @@ public class LandscapeImpMariaDB {
 	}
 	
 	/*
-	 * Método que se usa para buscar todos las notas de un libro
+	 * Método que se usa para buscar todos los paisajes de un libro
 	 * @Param Book b con el libro del que se quieran obtener las notas
-	 * @Return List<Note> con las notas de ese libro
+	 * @Return List<Landscape> con las Paisajes de ese libro
 	 * */
 	public static List<Landscape> getLandscapeByBook(Book b) throws DAOException{
 		List<Landscape> result=new ArrayList<>();
@@ -121,7 +121,7 @@ public class LandscapeImpMariaDB {
 			result= q.getResultList();
 			em.getTransaction().commit();
 		} catch (Exception e) {
-			throw new DAOException("Can´t find Notes",e);
+			throw new DAOException("Can´t find Landscape",e);
 		}finally {
 			em.close();
 		}

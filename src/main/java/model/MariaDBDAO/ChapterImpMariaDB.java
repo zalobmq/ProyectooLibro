@@ -20,7 +20,7 @@ public class ChapterImpMariaDB {
 	 * @Return emf.createEntityManager();
 	 * */
 	public static EntityManager createEM() {
-		EntityManagerFactory emf = PersistenceUnit.getInstance();
+		EntityManagerFactory emf = PersistenceUnit.getInstance("aplicacionMariaDB");
 
 		return emf.createEntityManager();
 	}
@@ -75,7 +75,7 @@ public class ChapterImpMariaDB {
 			EntityManager em = createEM();
 			em.getTransaction().begin();
 			em.persist(c);
-			em.getTransaction().begin();
+			em.getTransaction().commit();
 			result = true;
 		} catch (Exception e) {
 			result = false;
@@ -84,6 +84,29 @@ public class ChapterImpMariaDB {
 
 		return result;
 	}
+	/*
+	 * Método que se usa para actualizar un capítulo
+	 * @Param Chapter c
+	 * @Return booleano que devuelve verdadero si se ha conseguido actualizar el capítulo y falso si ha fallado
+	 * */
+	public static boolean update(Chapter c) throws DAOException {
+		boolean result = false;
+		EntityManager em = createEM();
+		try {
+			c=em.merge(c);//se relaciona el objeto de java con su tupla en la base de datos para actualizarla
+			em.getTransaction().begin(); 
+			em.getTransaction().commit();
+			
+			result = true;
+		} catch (Exception e) {
+			result = false;
+			throw new DAOException("Can´t update chapter",e);
+		}
+
+		return result;
+
+	}
+	
 	/*
 	 * Método que se usa para buscar un capítulo por id en la base de datos
 	 * @Param int id del capítulo que se quiera buscar

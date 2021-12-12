@@ -9,11 +9,22 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "Saga")
+@NamedQueries({
+	//consulta para buscar capítulos por el nombre
+	@NamedQuery(name="findBySagaName",query="SELECT s FROM Saga s WHERE s.name =:name"),
+	//consulta para traer todos los capítulos
+	@NamedQuery(name="ShowAllSagas",query = "SELECT s FROM Saga  s "),
+	//consulta para buscar capítulos por libro
+	//@NamedQuery(name="FindBySagasBook",query="SELECT s FROM Saga s WHERE s.saga.id=:Book_id")
+	
+})
 public class Saga {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)

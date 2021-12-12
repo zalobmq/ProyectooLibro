@@ -11,6 +11,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import model.Author;
+import model.Chapter;
 import model.IDAO.DAOException;
 import utils.PersistenceUnit;
 
@@ -93,6 +94,29 @@ public class AuthorImpMariaDB extends Author{
 		}
 		
 		return result;
+	}
+	
+	/*
+	 * Método que se usa para actualizar un autor
+	 * @Param Author a
+	 * @Return booleano que devuelve verdadero si se ha conseguido actualizar el autor y falso si ha fallado
+	 * */
+	public static boolean update(Author a) throws DAOException {
+		boolean result = false;
+		EntityManager em = createEM();
+		try {
+			a=em.merge(a);
+			em.getTransaction().begin(); 
+			em.getTransaction().commit();
+			
+			result = true;
+		} catch (Exception e) {
+			result = false;
+			throw new DAOException("Can´t update chapter",e);
+		}
+
+		return result;
+
 	}
 
 	

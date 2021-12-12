@@ -1,5 +1,6 @@
 package model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -30,7 +31,8 @@ import javax.persistence.Table;
 		@NamedQuery(name = "FindBookByAuthor", query = "SELECT b FROM Book b WHERE author.id=:author_id")
 
 })
-public class Book {
+public class Book implements Serializable{
+	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "ID")
