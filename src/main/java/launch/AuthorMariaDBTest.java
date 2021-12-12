@@ -11,7 +11,7 @@ public class AuthorMariaDBTest {
 
 	public static void main(String[] args) {
 		
-		saveTestH2();
+		//saveTestH2();
 		//saveTestMariaDB();
 		getByEmailMariaDB();
 		//getByNameMariaDB();
