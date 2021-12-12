@@ -10,6 +10,7 @@ import javax.persistence.TypedQuery;
 
 import model.Author;
 import model.Book;
+import model.Chapter;
 import model.Note;
 import model.IDAO.DAOException;
 import utils.PersistenceUnit;
@@ -76,7 +77,7 @@ public class BookImpMariaDB {
 	
 	/*
 	 * Método que se usa para guardar un libro
-	 * @Param Book
+	 * @Param Book b
 	 * @Return booleano que devuelve verdadero si se ha conseguido guardar el libro y falso si ha fallado
 	 * */
 	public static boolean save(Book b) throws DAOException {
@@ -93,6 +94,28 @@ public class BookImpMariaDB {
 		}
 		
 		return result;
+	}
+	/*
+	 * Método que se usa para actualizar un libro
+	 * @Param Book b
+	 * @Return booleano que devuelve verdadero si se ha conseguido actualizar el libro y falso si ha fallado
+	 * */
+	public static boolean update(Book b) throws DAOException {
+		boolean result = false;
+		EntityManager em = createEM();
+		try {
+			b=em.merge(b);//se relaciona el objeto de java con su tupla en la base de datos para actualizarla
+			em.getTransaction().begin(); 
+			em.getTransaction().commit();
+			
+			result = true;
+		} catch (Exception e) {
+			result = false;
+			throw new DAOException("Can´t update chapter",e);
+		}
+
+		return result;
+
 	}
 
 	

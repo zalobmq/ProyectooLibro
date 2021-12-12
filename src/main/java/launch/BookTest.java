@@ -12,7 +12,7 @@ import model.MariaDBDAO.BookImpMariaDB;
 public class BookTest {
 
 	public static void main(String[] args) {
-		saveTest();
+		//saveTest();
 		//getAllTest();
 
 	}

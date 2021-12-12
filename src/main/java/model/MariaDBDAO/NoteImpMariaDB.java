@@ -93,6 +93,28 @@ public class NoteImpMariaDB {
 		return result;
 	}
 	/*
+	 * Método que se usa para actualizar una nota
+	 * @Param Note n
+	 * @Return booleano que devuelve verdadero si se ha conseguido actualizar la nota y falso si ha fallado
+	 * */
+	public static boolean update(Note n) throws DAOException {
+		boolean result = false;
+		EntityManager em = createEM();
+		try {
+			n=em.merge(n);//se relaciona el objeto de java con su tupla en la base de datos para actualizarla
+			em.getTransaction().begin(); 
+			em.getTransaction().commit();
+			
+			result = true;
+		} catch (Exception e) {
+			result = false;
+			throw new DAOException("Can´t update chapter",e);
+		}
+
+		return result;
+
+	}
+	/*
 	 * Método que se usa para buscar una nota por id en la base de datos
 	 * @Param int id de la nota que se quiera buscar
 	 * @Return Note que tiene la id correspendiente en caso de que se haya encontrado o id=-1 si la nota no se ha encontrado

@@ -77,7 +77,7 @@ public class BookCover {
 
 	@Override
 	public String toString() {
-		return "BookCover [id=" + id + ", image=" + image + ", book=" + book + "]";
+		return "BookCover [id=" + id + ", image=" + image + ", book=" + book.getTitle() + "]";
 	}
 
 }

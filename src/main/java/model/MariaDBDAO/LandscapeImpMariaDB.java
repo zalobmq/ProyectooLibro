@@ -9,6 +9,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import model.Book;
+import model.Chapter;
 import model.Landscape;
 import model.Note;
 import model.IDAO.DAOException;
@@ -82,6 +83,28 @@ public class LandscapeImpMariaDB {
 		}
 		
 		return result;
+	}
+	/*
+	 * Método que se usa para actualizar un paisaje
+	 * @Param Landscape l
+	 * @Return booleano que devuelve verdadero si se ha conseguido actualizar el paisaje y falso si ha fallado
+	 * */
+	public static boolean update(Landscape l) throws DAOException {
+		boolean result = false;
+		EntityManager em = createEM();
+		try {
+			l=em.merge(l);//se relaciona el objeto de java con su tupla en la base de datos para actualizarla
+			em.getTransaction().begin(); 
+			em.getTransaction().commit();
+			
+			result = true;
+		} catch (Exception e) {
+			result = false;
+			throw new DAOException("Can´t update chapter",e);
+		}
+
+		return result;
+
 	}
 	/*
 	 * Método que se usa para buscar un paisaje por id en la base de datos

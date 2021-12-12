@@ -9,6 +9,7 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.TypedQuery;
 
 import model.Book;
+import model.Chapter;
 import model.Character;
 import model.Landscape;
 import model.IDAO.DAOException;
@@ -86,6 +87,29 @@ public class CharacterImpMariaDB {
 		}
 
 		return result;
+	}
+	
+	/*
+	 * Método que se usa para actualizar un personaje
+	 * @Param Character l
+	 * @Return booleano que devuelve verdadero si se ha conseguido actualizar el personaje en la base de datos y falso si ha fallado
+	 * */
+	public static boolean update(Character l) throws DAOException {
+		boolean result = false;
+		EntityManager em = createEM();
+		try {
+			l=em.merge(l);//se relaciona el objeto de java con su tupla en la base de datos para actualizarla
+			em.getTransaction().begin(); 
+			em.getTransaction().commit();
+			
+			result = true;
+		} catch (Exception e) {
+			result = false;
+			throw new DAOException("Can´t update character",e);
+		}
+
+		return result;
+
 	}
 	/*
 	 * Método que se usa para buscar un personaje por id en la base de datos

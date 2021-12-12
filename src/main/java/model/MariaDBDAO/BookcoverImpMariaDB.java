@@ -100,7 +100,7 @@ public class BookcoverImpMariaDB {
 			result = true;
 		} catch (Exception e) {
 			result = false;
-			throw new DAOException("Can´t update chapter",e);
+			throw new DAOException("Can´t update bookcover",e);
 		}
 
 		return result;
@@ -130,18 +130,18 @@ public class BookcoverImpMariaDB {
 		return result;
 	}
 	/*
-	 * Método que se usa para buscar todos las portadas de un libro
-	 * @Param Book b con el libro del que se quieran obtener las portadas
-	 * @Return List<BookCover> con los capítulos de ese libro
+	 * Método que se usa para buscar todos la portada de un libro
+	 * @Param Book b con el libro del que se quieran obtener la portada
+	 * @Return BookCover con la portada de ese libro, en caso de no encontrar la portada el id es -1
 	 * */
-	public static List<BookCover> getBookcoverByBook(Book b) throws DAOException{
-		List<BookCover> result=new ArrayList<>();
+	public static BookCover getBookcoverByBook(Book b) throws DAOException{
+		BookCover result=new BookCover();
 		EntityManager em=createEM();
 		try {
 			em.getTransaction().begin();
 			TypedQuery<BookCover> q=em.createNamedQuery("FindByBookcoverBook",BookCover.class);
 			q.setParameter("Book_id", b.getId());
-			result= q.getResultList();
+			result= q.getSingleResult();
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			throw new DAOException("Can´t find Chapters",e);
