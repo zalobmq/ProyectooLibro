@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 
-import model.Landscape;
+import model.Character;
 import model.IDAO.DAOException;
 import utils.PersistenceUnit;
 
@@ -24,12 +24,12 @@ public class CharacterImpMariaDB {
 		return em.getTransaction();
 	}
 
-	public static List<Landscape> getAll() throws DAOException {
-		List<Landscape> result = new ArrayList<Landscape>();
+	public static List<Character> getAll() throws DAOException {
+		List<Character> result = new ArrayList<Character>();
 		return result;
 	}
 
-	public static boolean delete(Landscape l) throws DAOException {
+	public static boolean delete(Character l) throws DAOException {
 		boolean result = false;
 		try {
 			EntityManager em = createEM();
@@ -45,7 +45,7 @@ public class CharacterImpMariaDB {
 		return result;
 	}
 
-	public static boolean save(Landscape l) throws DAOException {
+	public static boolean save(Character l) throws DAOException {
 		boolean result = false;
 		try {
 			EntityManager em = createEM();
@@ -62,14 +62,14 @@ public class CharacterImpMariaDB {
 		return result;
 	}
 
-	public static Landscape getByID(long id) throws DAOException {
-		Landscape result = new Landscape();
+	public static Character getByID(long id) throws DAOException {
+		Character result = new Character();
 
 		return result;
 	}
 
-	public static List<Landscape> getByName(String name) throws DAOException {
-		List<Landscape> result = new ArrayList<Landscape>();
+	public static List<Character> getByName(String name) throws DAOException {
+		List<Character> result = new ArrayList<Character>();
 
 		return result;
 	}
