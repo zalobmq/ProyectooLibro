@@ -2,7 +2,6 @@
 
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -15,8 +14,8 @@
    <top>
       <GridPane prefHeight="41.0" prefWidth="600.0" BorderPane.alignment="CENTER">
         <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="195.0" minWidth="10.0" prefWidth="66.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="334.0" minWidth="10.0" prefWidth="334.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
           <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
         </columnConstraints>
         <rowConstraints>
@@ -33,10 +32,6 @@
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
-               <children>
-                  <Label text="WELCOME : " />
-                  <Label fx:id="NameAuthorID" text="Label" GridPane.columnIndex="1" />
-               </children>
             </GridPane>
          </children>
       </GridPane>
@@ -51,9 +46,9 @@
           <RowConstraints maxHeight="178.8000244140625" minHeight="10.0" prefHeight="71.19998779296878" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TableView fx:id="TableBookID" prefHeight="274.0" prefWidth="214.0">
+            <TableView prefHeight="274.0" prefWidth="214.0">
               <columns>
-                <TableColumn fx:id="BookTitleID" prefWidth="213.0" text="Tittle" />
+                <TableColumn prefWidth="213.0" text="Tittle" />
               </columns>
             </TableView>
             <GridPane GridPane.rowIndex="1">
@@ -74,8 +69,8 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button mnemonicParsing="false" text="+ New book" GridPane.halignment="CENTER" />
-                        <Button mnemonicParsing="false" text="+ New chapter" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
+                        <Button mnemonicParsing="false" onAction="#newBook" text="+ New book" GridPane.halignment="CENTER" />
+                        <Button mnemonicParsing="false" onAction="#newChapter" text="+ New chapter" GridPane.columnIndex="1" GridPane.halignment="CENTER" />
                      </children>
                   </GridPane>
                   <GridPane prefHeight="28.0" prefWidth="214.0" GridPane.rowIndex="1">
@@ -85,7 +80,7 @@
                     </columnConstraints>
                      <children>
                         <Button mnemonicParsing="false" text="+ Add cover" GridPane.halignment="CENTER" />
-                        <Button mnemonicParsing="false" prefHeight="25.0" prefWidth="97.0" text="Edit Chapter" GridPane.columnIndex="1">
+                        <Button mnemonicParsing="false" onAction="#editChapter" prefHeight="25.0" prefWidth="97.0" text="Edit Chapter" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets left="5.0" />
                            </GridPane.margin>
@@ -103,11 +98,11 @@
    <center>
       <AnchorPane prefHeight="370.0" prefWidth="474.0" BorderPane.alignment="CENTER">
          <children>
-            <TableView fx:id="TableChapterID" layoutX="135.0" layoutY="52.0" prefHeight="370.0" prefWidth="387.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
+            <TableView layoutX="135.0" layoutY="52.0" prefHeight="370.0" prefWidth="387.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="-1.0" AnchorPane.topAnchor="0.0">
               <columns>
-                <TableColumn fx:id="ChapterNumberID" prefWidth="194.0" text="Chapter Number" />
-                  <TableColumn fx:id="ChapterNameID" minWidth="0.0" prefWidth="104.0" text="Name" />
-                  <TableColumn fx:id="ChapterStatusID" prefWidth="121.60003662109375" text="Status" />
+                <TableColumn prefWidth="194.0" text="Chapter Number" />
+                  <TableColumn minWidth="0.0" prefWidth="104.0" text="Name" />
+                  <TableColumn prefWidth="121.60003662109375" text="Status" />
               </columns>
             </TableView>
          </children>
