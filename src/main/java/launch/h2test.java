@@ -13,7 +13,7 @@ public class h2test {
 	
 	public static void main(String[] args) {
 		//saveBook();
-		savechapter();
+		//savechapter();
 	}
 	static void getbymailh2() {
 
@@ -34,7 +34,6 @@ public class h2test {
 		Book b=new Book();
 		try {
 			a = AuthorImpH2.getByEmail("a@a");
-			b.setAuthor(a);
 		} catch (DAOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();

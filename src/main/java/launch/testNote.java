@@ -16,9 +16,9 @@ public class testNote {
 	private static EntityManagerFactory emf;
 	public static void main(String[] args) {
 		//saveTestH2();
-		//test();
+		test();
 		//saveTestMariaDB();
-		getNotesByBookTest();
+		//getNotesByBookTest();
 	}
 	static void test(){
 		

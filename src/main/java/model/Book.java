@@ -22,13 +22,13 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Book")
 @NamedQueries({
-		// consulta para buscar libros por el nombre
-		@NamedQuery(name = "findByBookName", query = "SELECT b FROM Book b WHERE b.title =:title"),
-		// consulta para traer todos los libros
-		@NamedQuery(name = "ShowAllBooks", query = "SELECT b FROM Book b "),
-		// consulta para buscar libros por autor
-		@NamedQuery(name = "FindBookByAuthor", query = "SELECT b FROM Book b WHERE author.id=:author_id")
-
+	//consulta para buscar libros por el nombre
+	@NamedQuery(name="findByBookName",query="SELECT b FROM Book b WHERE b.title =:title"),
+	//consulta para traer todos los libros
+	@NamedQuery(name="ShowAllBooks",query = "SELECT b FROM Book b "),
+	//consulta para buscar libros por autor
+		@NamedQuery(name="FindBookByAuthor",query="SELECT b FROM Book b WHERE author.id=:author_id")
+	
 })
 public class Book {
 	@Id
@@ -108,7 +108,7 @@ public class Book {
 		this.landscapes = new ArrayList<Landscape>();
 		this.characters = new ArrayList<Character>();
 		this.author = new Author();
-		this.saga = null;
+		this.saga = new Saga();
 	}
 
 	public Long getId() {
@@ -175,35 +175,10 @@ public class Book {
 		this.characters = characters;
 	}
 
-	public BookCover getBookcover() {
-		return bookcover;
-	}
-
-	public void setBookcover(BookCover bookcover) {
-		this.bookcover = bookcover;
-	}
-
-	public Author getAuthor() {
-		return author;
-	}
-
-	public void setAuthor(Author author) {
-		this.author = author;
-	}
-
-	public Saga getSaga() {
-		return saga;
-	}
-
-	public void setSaga(Saga saga) {
-		this.saga = saga;
-	}
-
 	@Override
 	public String toString() {
-		return "Book [id=" + id + ", title=" + title + ", sypnosis=" + sypnosis + ", genre=" + genre + ", bookcover="
-				+ bookcover + ", notes=" + notes + ", chapters=" + chapters + ", landscapes=" + landscapes
-				+ ", characters=" + characters + ", author=" + author + ", saga=" + saga + "]";
+		return "Book [id=" + id + ", title=" + title + ", sypnosis=" + sypnosis + ", genre=" + genre + ", chapters="
+				+ chapters + ", notes=" + notes + ", landscapes=" + landscapes + ", characters=" + characters + "]";
 	}
 
 }
