@@ -1,5 +1,6 @@
 package controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import javafx.beans.property.SimpleStringProperty;
@@ -10,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.stage.Stage;
 import model.Author;
 import model.Book;
 import model.Chapter;
@@ -80,6 +82,49 @@ public class MainScreenController {
 	public void welcomeAuthor(Author a) {
 		NameAuthorID.setText(a.getName());
 	}
+	
+	/*METODOS BOTONES*/
+	
+	public void newBook() {
+		
+		try {
+			App.loadScene(new Stage(), "NewBook", "Add new book");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void newChapter() {
+		
+		try {
+			App.loadScene(new Stage(), "NewChapter", "Add new chapter");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	public void editChapter() {
+		
+		try {
+			App.loadScene(new Stage(), "EditScreen", "Edit chapter");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	/*
+	public void infoBook() {
+		
+		try {
+			App.loadScene(new Stage(), "InfoBook", "Info");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	*/
+	
+	
 	
 	/*CONFIGURAR TABLA*/
 	/*
