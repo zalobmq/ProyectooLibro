@@ -12,7 +12,8 @@ import model.h2DAO.ChapterImpH2;
 public class h2test {
 	
 	public static void main(String[] args) {
-		saveBook();
+		//saveBook();
+		savechapter();
 	}
 	static void getbymailh2() {
 
@@ -60,6 +61,8 @@ public class h2test {
 		}
 		
 	}
+	
+
 	
 	static void savechapter() {
 		Chapter c = new Chapter();
