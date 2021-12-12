@@ -19,6 +19,7 @@ import model.IDAO.DAOException;
 import model.MariaDBDAO.AuthorImpMariaDB;
 import model.MariaDBDAO.BookImpMariaDB;
 import model.MariaDBDAO.BookcoverImpMariaDB;
+import model.MariaDBDAO.ChapterImpMariaDB;
 
 
 public class MainScreenController {
@@ -39,6 +40,7 @@ public class MainScreenController {
 	@FXML
 	private TableView<Chapter> TableChapterID;
 
+	 private ObservableList<Chapter> listaCapitulos;
 	/* COLUMN */
 	@FXML
 	private TableColumn <Book, String> BookTitleID;
@@ -49,6 +51,7 @@ public class MainScreenController {
 	@FXML
 	private TableColumn <Chapter, String> ChapterStatusID;
 	
+	private Book b;
 	/* LABEL */
 	@FXML
 	private Label NameAuthorID;
@@ -57,16 +60,7 @@ public class MainScreenController {
 	protected void initialize() {
 		comprobaconAutor(author);
 		welcomeAuthor(author);
-		//showBooks();
-		
-		try {
-			List<Book> lista = BookImpMariaDB.getBookByAuthor(author);
-			lista.toString();
-		} catch (DAOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		showBooks();
 		
 	}
 	
@@ -97,6 +91,7 @@ public class MainScreenController {
 	public void newChapter() {
 		
 		try {
+			NewChapterController.setBook(b = TableBookID.getSelectionModel().getSelectedItem());
 			App.loadScene(new Stage(), "NewChapter", "Add new chapter");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -127,7 +122,7 @@ public class MainScreenController {
 	
 	
 	/*CONFIGURAR TABLA*/
-	/*
+	
 	private void configurarTablaBooks() {
 		BookTitleID.setCellValueFactory(cadalista -> {
             SimpleStringProperty v = new SimpleStringProperty();
@@ -136,11 +131,48 @@ public class MainScreenController {
         });
 		    
     }
-	/*
+	@FXML
+	private void configurarTablaChapter() {
+		if(TableBookID.getSelectionModel().getSelectedItem() != null) {
+			b = TableBookID.getSelectionModel().getSelectedItem();
+			try {
+				listaCapitulos = FXCollections.observableArrayList(ChapterImpMariaDB.getChapterByBook(b));
+				TableChapterID.setItems(listaCapitulos);
+			} catch (DAOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		ChapterNumberID.setCellValueFactory(cadalista -> {
+            SimpleStringProperty v = new SimpleStringProperty();
+            v.setValue(""+cadalista.getValue().getChapterNumber());
+            return v;
+        });
+		ChapterNameID.setCellValueFactory(cadalista -> {
+            SimpleStringProperty v = new SimpleStringProperty();
+            v.setValue(cadalista.getValue().getName());
+            return v;
+        });
+		ChapterStatusID.setCellValueFactory(cadalista -> {
+            SimpleStringProperty v = new SimpleStringProperty();
+            if (cadalista.getValue().isFinish()) {
+            v.setValue("Terminado");
+            }else {
+            	v.setValue("No terminado");
+            }
+            return v;
+        });
+		    
+    }
+	}
+	
+	
+	@FXML
 	private void showBooks() {
 		configurarTablaBooks();
 		try {
-			ObservableList<Book>lista = FXCollections.observableArrayList(BookImpMariaDB.getBookByAuthor(author));
+			List<Book> booksDB = BookImpMariaDB.getBookByAuthor(author);
+			System.out.println(booksDB.toString());
+			ObservableList<Book>lista = FXCollections.observableArrayList(booksDB);
 			TableBookID.setItems(lista);
 		} catch (DAOException e) {
 			// TODO Auto-generated catch block
@@ -148,7 +180,16 @@ public class MainScreenController {
 		}
 		
 	}
+	/*
+	@FXML
+	private void showChapters() {
+		configurarTablaChapter();
+		
+		
+	}
 	*/
+	
+	
 	
 	
 	
