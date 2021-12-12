@@ -6,6 +6,7 @@ import java.util.List;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -18,15 +19,15 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Landscape")
-/*@NamedQueries({
+@NamedQueries({
 	//consulta para buscar paisajes por el nombre
 	@NamedQuery(name="findByLandscapeName",query="SELECT l FROM Landscape l WHERE l.name =:name"),
 	//consulta para traer todos los paisajes
 	@NamedQuery(name="ShowAllLandscape",query = "SELECT l FROM Landscape l "),
 	//consulta para buscar paisajes por libro
-	@NamedQuery(name="FindByLandscapesBook",query="SELECT l FROM Landscape l JOIN l.Landscape_Book lb on lb.id=:Book_id ")
+	//@NamedQuery(name="FindByLandscapesBook",query="SELECT l FROM Landscape l, l.books_landscape lb  where lb.id= ")
 	
-})*/
+})
 public class Landscape {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,8 +39,8 @@ public class Landscape {
 	private String description;
 	  @ManyToMany(cascade = {
 	            CascadeType.ALL,
-	            CascadeType.ALL
-	    })
+	            CascadeType.ALL,
+	    }  )
 	    @JoinTable(
 	            name = "Landscape_Book",
 	            joinColumns = {@JoinColumn(name = "Landscape_id")},

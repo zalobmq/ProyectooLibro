@@ -13,7 +13,7 @@ public class AuthorMariaDBTest {
 		
 		saveTestH2();
 		//saveTestMariaDB();
-		//getByEmailMariaDB();
+		getByEmailMariaDB();
 		//getByNameMariaDB();
 		
 
@@ -52,10 +52,8 @@ public class AuthorMariaDBTest {
 				
 			}
 	static void getByEmailMariaDB() {
-		Author a=new Author("Juanito", "perez","123","a@a");
 		
 		try {
-			AuthorImpMariaDB.save(a);
 			Author b= AuthorImpMariaDB.getByEmail("a@a");
 			System.out.println(b.toString());
 			
