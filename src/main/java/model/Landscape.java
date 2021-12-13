@@ -103,6 +103,25 @@ public class Landscape {
 		this.description = description;
 	}
 
+	
+	/**
+	 * @return the books_landscape
+	 */
+	public List<Book> getBooks_landscape() {
+		return books_landscape;
+	}
+
+
+
+	/**
+	 * @param books_landscape the books_landscape to set
+	 */
+	public void setBooks_landscape(List<Book> books_landscape) {
+		this.books_landscape = books_landscape;
+	}
+
+
+
 	@Override
 	public String toString() {
 		return "Landscape [id=" + id + ", name=" + name + ", description=" + description + "]";

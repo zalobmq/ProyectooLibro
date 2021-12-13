@@ -82,6 +82,23 @@ public class Note implements Serializable {
 		this.text = text;
 	}
 
+	
+	/**
+	 * @return the book_note
+	 */
+	public Book getBook_note() {
+		return book_note;
+	}
+
+	/**
+	 * @param book_note the book_note to set
+	 */
+	public void setBook_note(Book book_note) {
+		this.book_note = book_note;
+	}
+
+	
+
 	@Override
 	public String toString() {
 		return "Note [id=" + id + ", title=" + title + ", text=" + text + "]";
