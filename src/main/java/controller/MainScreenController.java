@@ -121,17 +121,18 @@ public class MainScreenController {
 			e.printStackTrace();
 		}
 	}
-	/*
+	
 	public void infoBook() {
 		
 		try {
+			InfoBookController.setBook(b = TableBookID.getSelectionModel().getSelectedItem());
 			App.loadScene(new Stage(), "InfoBook", "Info");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
-	*/
+	
 	
 	
 	

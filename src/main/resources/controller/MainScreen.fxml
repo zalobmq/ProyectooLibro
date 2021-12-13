@@ -39,6 +39,7 @@
                </children>
             </GridPane>
             <Button mnemonicParsing="false" onAction="#configurarTablaChapter" text="Show Chapters" GridPane.columnIndex="1" />
+            <Button mnemonicParsing="false" onAction="#infoBook" text="INFO BOOK" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
          </children>
       </GridPane>
    </top>

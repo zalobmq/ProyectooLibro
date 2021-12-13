@@ -329,12 +329,7 @@ public class EditScreenController {
 			Value3TitleID.setText("");
 			Value3ContentID.setText("");
 
-			
-		}
-			
-		
-		
-			
+		}	
 	
 	}
 	@FXML
