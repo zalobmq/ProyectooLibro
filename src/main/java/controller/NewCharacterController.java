@@ -1,6 +1,8 @@
 package controller;
 
 
+import java.util.ArrayList;
+
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
@@ -36,6 +38,7 @@ public class NewCharacterController {
 	public void addCharacter() {
 		
 		Character character = new Character();
+		character.setBooks_character(new ArrayList<Book>());
 		
 		character.setName(NameID.getText());
 		character.setDescription(DescriptionID.getText());
@@ -45,6 +48,8 @@ public class NewCharacterController {
 			System.out.println(book.getCharacters().toString());
 			book.getCharacters().add(character);//lo añado a la lista de personajes del libro
 			System.out.println(book.getCharacters().toString());
+			character.getBooks_character().add(book);
+			
 			
 			BookImpMariaDB.update(book);//actualizo libro
 			mostrarAlertInfo();
