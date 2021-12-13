@@ -16,8 +16,7 @@ import utils.PersistenceUnit;
 public class AuthorImpH2 {
 
 	/*
-	 * Método que devuelve emf
-	 * 
+	 * Método que devuelve emf	 
 	 * @Return emf.createEntityManager();
 	 */
 	public static EntityManager createEM() {
@@ -26,8 +25,7 @@ public class AuthorImpH2 {
 		return emf.createEntityManager();
 	}
 	/*
-	 * Método que crea el objeto para realizar las transacciones
-	 * 
+	 * Método que crea el objeto para realizar las transacciones	 
 	 * @Return em.getTransaction()
 	 */
 
@@ -37,8 +35,7 @@ public class AuthorImpH2 {
 	}
 
 	/*
-	 * Método que devuelve todos los autores
-	 * 
+	 * Método que devuelve todos los autores	 
 	 * @Return lista de todos los autores existentes en la base de datos
 	 */
 	public static List<Author> getAll() throws DAOException {
@@ -48,8 +45,7 @@ public class AuthorImpH2 {
 	}
 
 	/*
-	 * Método que borra el autor especificado
-	 * 
+	 * Método que borra el autor especificado 
 	 * @Param Author que se quiera borrar
 	 * 
 	 * @Return Booleano que devuelve verdadero si se ha borrado el autor y falso y
@@ -96,6 +92,29 @@ public class AuthorImpH2 {
 		}
 
 		return result;
+	}
+	/*
+	 * Método que se usa para actualizar un autor
+	 * @Param Author a
+	 * @Return booleano que devuelve verdadero si se ha conseguido actualizar el autor y falso si ha fallado
+	 * */
+	public static boolean update(Author a) throws DAOException {
+		boolean result = false;
+		EntityManager em = createEM();
+		try {
+			a=em.merge(a);
+			em.getTransaction().begin(); 
+			em.getTransaction().commit();
+			
+			result = true;
+		} catch (Exception e) {
+			
+			result = false;
+			throw new DAOException("Can´t update chapter",e);
+		}
+
+		return result;
+
 	}
 
 	/*
