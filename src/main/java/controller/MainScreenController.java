@@ -112,6 +112,15 @@ public class MainScreenController {
 			e.printStackTrace();
 		}
 	}
+	public void addCover() {
+		try {
+			AddCoverController.setBook(b = TableBookID.getSelectionModel().getSelectedItem());
+			App.loadScene(new Stage(), "AddCover", "Add Cover");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	/*
 	public void infoBook() {
 		
