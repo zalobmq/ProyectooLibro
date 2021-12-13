@@ -86,7 +86,7 @@
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                     </columnConstraints>
                      <children>
-                        <Button mnemonicParsing="false" text="+ Add cover" GridPane.halignment="CENTER" />
+                        <Button mnemonicParsing="false" onAction="#addCover" text="+ Add cover" GridPane.halignment="CENTER" />
                         <Button mnemonicParsing="false" onAction="#editChapter" prefHeight="25.0" prefWidth="97.0" text="Edit Chapter" GridPane.columnIndex="1">
                            <GridPane.margin>
                               <Insets left="5.0" />
