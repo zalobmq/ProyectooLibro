@@ -12,6 +12,7 @@ import model.Landscape;
 import model.IDAO.DAOException;
 import model.MariaDBDAO.BookImpMariaDB;
 import model.MariaDBDAO.CharacterImpMariaDB;
+import model.MariaDBDAO.LandscapeImpMariaDB;
 
 public class NewLandspaceControlller {
 
@@ -35,20 +36,20 @@ public class NewLandspaceControlller {
 		
 	}
 	
-public void addCharacter() {
+	
+	public void addLandspace() {
 		
 		Landscape landscape = new Landscape();
-		//landscape.setBooks_character(new ArrayList<Book>());
+		landscape.setBooks_landscape(new ArrayList<Book>());
 		
 		landscape.setName(NameID.getText());
 		landscape.setDescription(DescriptionID.getText());
 		try {
-			CharacterImpMariaDB.save(character);//Guardo personaje
-			System.out.println(book.getCharacters().toString());
-			book.getCharacters().add(character);//lo añado a la lista de personajes del libro
-			System.out.println(book.getCharacters().toString());
-			character.getBooks_character().add(book);
-			
+			LandscapeImpMariaDB.save(landscape);
+			System.out.println(book.getLandscapes().toString());
+			book.getLandscapes().add(landscape);//lo añado a la lista de personajes del libro
+			System.out.println(book.getLandscapes().toString());
+			landscape.getBooks_landscape().add(book);
 			
 			BookImpMariaDB.update(book);//actualizo libro
 			mostrarAlertInfo();
@@ -61,6 +62,8 @@ public void addCharacter() {
 		DescriptionID.clear();
 		
 	}
+	
+		
 	
 	@FXML
 	private void mostrarAlertErrorEmptyFields() {

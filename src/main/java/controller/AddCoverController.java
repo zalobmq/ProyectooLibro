@@ -69,8 +69,9 @@ public class AddCoverController {
 	public void addCover() {
 		 
 		try {
+			//BookcoverImpMariaDB.save(cover);
 			cover.setBook(book);
-			BookcoverImpMariaDB.save(cover);
+			//BookcoverImpMariaDB.update(cover);
 			book.setBookcover(cover);
 			BookImpMariaDB.update(book);
 			
