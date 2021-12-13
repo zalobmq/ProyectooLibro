@@ -229,6 +229,17 @@ public class EditScreenController {
 		}
 
 	}
+	public void newNote() {
+		
+		try {
+			NewNoteController.setBook(book);
+			App.loadScene(new Stage(), "NewNote", "New Note ");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
 	/*
 	public void newLandspace() {
 		
