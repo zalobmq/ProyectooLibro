@@ -52,6 +52,7 @@ public class MainScreenController {
 	private TableColumn <Chapter, String> ChapterStatusID;
 	
 	private Book b;
+	private Chapter c;
 	/* LABEL */
 	@FXML
 	private Label NameAuthorID;
@@ -101,6 +102,9 @@ public class MainScreenController {
 	public void editChapter() {
 		
 		try {
+			EditScreenController.setChapter(c = TableChapterID.getSelectionModel().getSelectedItem());
+			EditScreenController.setBook(b = TableBookID.getSelectionModel().getSelectedItem());
+			System.out.println(c.toString());
 			App.loadScene(new Stage(), "EditScreen", "Edit chapter");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
