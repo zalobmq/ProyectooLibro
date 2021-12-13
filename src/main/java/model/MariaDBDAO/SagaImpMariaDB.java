@@ -100,6 +100,7 @@ public class SagaImpMariaDB {
 			
 			result = true;
 		} catch (Exception e) {
+			
 			result = false;
 			throw new DAOException("Can´t update chapter",e);
 		}

@@ -15,16 +15,20 @@ import model.MariaDBDAO.CharacterImpMariaDB;
 public class BookTest {
 
 	public static void main(String[] args) {
-		//saveTest();
+		saveTest();
 		//getAllTest();
-		addCharacterTest();
+		//addCharacterTest();
 
 	}
 	static void saveTest() {
 		Book b=new Book();
+		b.setTitle("titulo");
 		try {
-			Author a=AuthorImpMariaDB.getByID(1);
+			//BookImpMariaDB.save(b);
+			Author a=AuthorImpMariaDB.getByID(14);
+			a.setName("Pedro");
 			b.setAuthor(a);
+			AuthorImpMariaDB.update(a);
 		} catch (DAOException e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
