@@ -2,6 +2,7 @@ package model;
 
 import java.io.Serializable;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -34,7 +35,7 @@ public class Note implements Serializable {
 	private String title;
 	@Column(name = "text")
 	private String text;
-	@ManyToOne()
+	@ManyToOne(cascade = {CascadeType.ALL, CascadeType.MERGE})
 	@JoinColumn(name = "Book_id")
 	private Book book_note;
 
