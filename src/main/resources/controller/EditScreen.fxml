@@ -55,7 +55,7 @@
   <children>
     <HBox id="HBox" alignment="CENTER_LEFT" spacing="5.0" VBox.vgrow="NEVER">
       <children>
-            <Button fx:id="NewNote" mnemonicParsing="false" text="+ New note" />
+            <Button fx:id="NewNote" mnemonicParsing="false" onAction="#newNote" text="+ New note" />
             <Button fx:id="NewCharacter" mnemonicParsing="false" onAction="#newCharacter" text="+ New character" />
             <Button fx:id="Update" mnemonicParsing="false" text="Update" />
             <ImageView fitHeight="26.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
