@@ -118,7 +118,14 @@ public class SagaImpMariaDB {
 		
 		return result;
 	}
-
+	/*
+	 * Método que se usa para buscar Sagas por el nombre
+	 * 
+	 * @Param String name con el nombre de la nota que se desa buscar
+	 * 
+	 * @Return List<Saga> con las Sagas que coincidan con dicho nombre, en caso de
+	 * no encontrar ninguno devuelve una lista vacia
+	 */
 	public static List<Saga> getByName(String name) throws DAOException {
 		List<Saga> result=new ArrayList<>();
 		
