@@ -10,100 +10,220 @@ import javax.persistence.TypedQuery;
 
 import model.Author;
 import model.Book;
+import model.Character;
 import model.IDAO.DAOException;
 import utils.PersistenceUnit;
 
 public class BookImpH2 {
-	
 
+	/*
+	 * Método que devuelve emf
+	 * 
+	 * @Return emf.createEntityManager();
+	 */
 	public static EntityManager createEM() {
-		EntityManagerFactory emf=PersistenceUnit.getInstance("aplicacionH2");
-		
+		EntityManagerFactory emf = PersistenceUnit.getInstance("aplicacionH2");
+
 		return emf.createEntityManager();
 	}
-	
+
+	/*
+	 * Método que crea el objeto para realizar las transacciones
+	 * 
+	 * @Return em.getTransaction()
+	 */
 	public static EntityTransaction beginsession() {
-		EntityManager em=createEM();
+		EntityManager em = createEM();
 		return em.getTransaction();
 	}
-	
+
+	/*
+	 * Método que se usa para traer todos los libros de la base de datos
+	 * 
+	 * @Return List<Book> con todos los libros de la base de datos
+	 */
 	public List<Book> getAll() throws DAOException {
-		// TODO Auto-generated method stub
-		return null;
+		List<Book> result = new ArrayList<>();
+		EntityManager em = createEM();
+		try {
+			em.getTransaction().begin();
+			TypedQuery<Book> q = em.createNamedQuery("ShowAllBooks", Book.class);
+			result = q.getResultList();
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			throw new DAOException("Can´t find Books", e);
+		} finally {
+			em.close();
+		}
+
+		return result;
 	}
 
+	/*
+	 * Método que borra el libro especificado
+	 * 
+	 * @Param Book b que se quiera borrar
+	 * 
+	 * @Return Booleano que devuelve verdadero si se ha borrado el libro y falso si
+	 * no lo ha conseguido borrar
+	 */
 	public static boolean delete(Book b) throws DAOException {
-		boolean result=false;
+		boolean result = false;
 		try {
-			EntityManager em=createEM();
+			EntityManager em = createEM();
 			em.getTransaction().begin();
 			em.remove(b);
 			em.getTransaction().commit();
-			result =true;
-			
+			result = true;
+
 		} catch (Exception e) {
-			result=false;
-			throw new DAOException("Can´t delete",e);
+			result = false;
+			throw new DAOException("Can´t delete", e);
 		}
 		return result;
 	}
 
 	/*
 	 * Método que se usa para guardar un libro
+	 * 
 	 * @Param Book
-	 * @Return booleano que devuelve verdadero si se ha conseguido guardar el libro y falso si ha fallado
-	 * */
+	 * 
+	 * @Return booleano que devuelve verdadero si se ha conseguido guardar el libro
+	 * y falso si ha fallado
+	 */
 	public static boolean save(Book b) throws DAOException {
-		boolean result=false;
+		boolean result = false;
 		try {
-			EntityManager em=createEM();
+			EntityManager em = createEM();
 			em.getTransaction().begin();
 			em.persist(b);
 			em.getTransaction().commit();
-			result=true;
+			result = true;
 		} catch (Exception e) {
-			result=false;
-			throw new DAOException("Can´t save",e);
+			result = false;
+			throw new DAOException("Can´t save", e);
 		}
-		
+
 		return result;
 	}
 
-	
-
-	public static Book getByID(long id) throws DAOException {
-		Book result=new Book();
-		return result;
-	}
-
-	public static List<Book> getByName(String name) throws DAOException {
-		List<Book> result=new ArrayList<Book>();
-		
-		return result;
-	}
-	
 	/*
-	 * Método que se usa para buscar todos los libros de un autor
-	 * @Param Author a con el autor del que se quieran obtener los libros
-	 * @Return List<Book> con los libros del autor
-	 * */
-	public static List<Book> getBookByAuthor(Author a) throws DAOException{
-		List<Book> result=new ArrayList<>();
-		EntityManager em=createEM();
+	 * Método que se usa para actualizar un libro
+	 * 
+	 * @Param Book b
+	 * 
+	 * @Return booleano que devuelve verdadero si se ha conseguido actualizar el
+	 * libro y falso si ha fallado
+	 */
+	public static boolean update(Book b) throws DAOException {
+		boolean result = false;
+		EntityManager em = createEM();
+		try {
+			b = em.merge(b);// se relaciona el objeto de java con su tupla en la base de datos para
+							// actualizarla
+			em.getTransaction().begin();
+			em.getTransaction().commit();
+
+			result = true;
+		} catch (Exception e) {
+			result = false;
+			throw new DAOException("Can´t update chapter", e);
+		}
+
+		return result;
+
+	}
+
+	/*
+	 * Método que se usa para agregar un personaje a un libro, tanto a la base de
+	 * datos como en java
+	 * 
+	 * @Param Book b, Character c
+	 * 
+	 * @Return boolean que devuelve verdadero si se ha conseguido guardar en la base
+	 * de datos y falso si el proceso ha fallado
+	 */
+	public static boolean addCharacter(Book b, Character c) throws DAOException {
+		boolean result = false;
+		EntityManager em = createEM();
 		try {
 			em.getTransaction().begin();
-			TypedQuery<Book> q=em.createNamedQuery("FindBookByAuthor",Book.class);
-			q.setParameter("author_id", a.getId());
-			result= q.getResultList();
+
+			em.merge(c);
+			c.getBooks_character().add(b);
+			b.getCharacters().add(c);
 			em.getTransaction().commit();
+			result = true;
 		} catch (Exception e) {
-			throw new DAOException("Can´t find books",e);
-		}finally {
-			//en La carga lazy no se debe cerrar la conexion
-			//em.close();
+
+			result = false;
+			throw new DAOException("Can´t add Character in book", e);
+		} finally {
+			em.close();
 		}
 		return result;
 	}
-	
+
+	/*
+	 * Método que se usa para buscar un libro por id en la base de datos
+	 * 
+	 * @Param int id del libro que se quiera buscar
+	 * 
+	 * @Return Book que tiene la id correspendiente en caso de que se haya
+	 * encontrado o id=-1 si el libro no se ha encontrado
+	 * 
+	 */
+	public static Book getByID(long id) throws DAOException {
+		Book result = new Book();
+
+		EntityManager em = createEM();
+		try {
+			em.getTransaction().begin();
+			result = em.find(Book.class, id);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			throw new DAOException("Can´t get book with this id", e);
+		}
+		return result;
+	}
+
+	/*
+	 * Método que se usa para buscar libros por el titulo
+	 * 
+	 * @Param String name con el titulo del libro que se desa buscar
+	 * 
+	 * @Return List<Book> con los libros que coincidan con dicho nombre, en caso de
+	 * no encontrar ninguno devuelve una lista vacia
+	 */
+	public static List<Book> getByName(String name) throws DAOException {
+		List<Book> result = new ArrayList<Book>();
+
+		return result;
+	}
+
+	/*
+	 * Método que se usa para buscar todos los libros de un autor
+	 * 
+	 * @Param Author a con el autor del que se quieran obtener los libros
+	 * 
+	 * @Return List<Book> con los libros del autor
+	 */
+	public static List<Book> getBookByAuthor(Author a) throws DAOException {
+		List<Book> result = new ArrayList<>();
+		EntityManager em = createEM();
+		try {
+			em.getTransaction().begin();
+			TypedQuery<Book> q = em.createNamedQuery("FindBookByAuthor", Book.class);
+			q.setParameter("author_id", a.getId());
+			result = q.getResultList();
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			throw new DAOException("Can´t find books", e);
+		} finally {
+			// en La carga lazy no se debe cerrar la conexion
+			// em.close();
+		}
+		return result;
+	}
 
 }
