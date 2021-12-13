@@ -39,7 +39,7 @@ public class Landscape {
 	private String description;
 	  @ManyToMany(cascade = {
 	            CascadeType.ALL,
-	            CascadeType.ALL,
+	            CascadeType.MERGE,
 	    }  )
 	    @JoinTable(
 	            name = "Landscape_Book",

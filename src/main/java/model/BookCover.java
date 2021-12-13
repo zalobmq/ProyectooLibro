@@ -28,7 +28,7 @@ public class BookCover {
 	private Long id;
 	@Column(name = "IMAGE")
 	private String image;
-	@OneToOne(mappedBy = "bookcover", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+	@OneToOne(mappedBy = "bookcover", cascade = {CascadeType.ALL, CascadeType.MERGE}, orphanRemoval = true, fetch = FetchType.EAGER)
 	private Book book;
 
 	public BookCover(Long id, String image, Book book) {

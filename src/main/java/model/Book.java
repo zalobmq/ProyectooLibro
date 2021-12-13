@@ -44,18 +44,18 @@ public class Book implements Serializable{
 	@Column(name = "GENRE")
 	private String genre;
 	@JoinColumn(name = "book")
-	@OneToOne(fetch = FetchType.EAGER)
+	@OneToOne(fetch = FetchType.EAGER, cascade = {CascadeType.ALL, CascadeType.MERGE})
 	private BookCover bookcover;
 
 	@OneToMany(mappedBy = "book_note", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Note> notes;
 	@OneToMany(mappedBy = "book_chapter", cascade = CascadeType.ALL, orphanRemoval = true)
 	private List<Chapter> chapters;
-	@ManyToMany(mappedBy = "books_landscape")
+	@ManyToMany(mappedBy = "books_landscape",cascade = { CascadeType.ALL})
 	private List<Landscape> landscapes;
 	@ManyToMany(mappedBy = "books_character",cascade = { CascadeType.ALL})
 	private List<Character> characters;
-	@ManyToOne(fetch = FetchType.LAZY)
+	@ManyToOne(fetch = FetchType.LAZY,cascade = { CascadeType.ALL})
 	@JoinColumn(name = "books_author")
 	private Author author;
 	@ManyToOne()
