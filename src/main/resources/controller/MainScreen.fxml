@@ -24,7 +24,6 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <Button mnemonicParsing="false" text="InfoLibro" GridPane.columnIndex="3" GridPane.halignment="CENTER" />
             <Button mnemonicParsing="false" onAction="#update" text="🔁" GridPane.halignment="CENTER" />
             <GridPane GridPane.columnIndex="2">
               <columnConstraints>

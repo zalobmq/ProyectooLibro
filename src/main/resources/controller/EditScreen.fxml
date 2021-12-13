@@ -57,7 +57,6 @@
       <children>
             <Button fx:id="NewNote" mnemonicParsing="false" text="+ New note" />
             <Button fx:id="NewCharacter" mnemonicParsing="false" onAction="#newCharacter" text="+ New character" />
-            <Button fx:id="NewPlace" mnemonicParsing="false" text="+ New place" />
             <Button fx:id="Update" mnemonicParsing="false" text="Update" />
             <ImageView fitHeight="26.0" fitWidth="24.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -165,19 +164,6 @@
                                        </children></AnchorPane>
                               </content>
                             </Tab>
-                              <Tab text="PLACES">
-                                <content>
-                                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
-                                       <children>
-                                          <TableView fx:id="TableLandspaceID" layoutX="14.0" layoutY="20.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                            <columns>
-                                              <TableColumn fx:id="NameLandspaceID" prefWidth="244.0" resizable="false" text="Name" />
-                                            </columns>
-                                          </TableView>
-                                       </children>
-                                    </AnchorPane>
-                                </content>
-                              </Tab>
                             <Tab text="NOTES">
                               <content>
                                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
@@ -198,9 +184,9 @@
                             <ColumnConstraints hgrow="SOMETIMES" maxWidth="165.0" minWidth="10.0" prefWidth="156.0" />
                           </columnConstraints>
                           <rowConstraints>
-                            <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="38.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="191.0" minHeight="10.0" prefHeight="44.0" vgrow="SOMETIMES" />
-                            <RowConstraints maxHeight="199.0" minHeight="10.0" prefHeight="189.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="90.0" minHeight="10.0" prefHeight="59.0" vgrow="SOMETIMES" />
+                            <RowConstraints maxHeight="239.0" minHeight="10.0" prefHeight="173.0" vgrow="SOMETIMES" />
+                              <RowConstraints maxHeight="199.0" minHeight="10.0" prefHeight="60.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
                               <Label fx:id="Value1TitleID" text="Label" GridPane.halignment="CENTER">
@@ -213,12 +199,7 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="Value2TitleID" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="1">
-                                 <font>
-                                    <Font size="14.0" />
-                                 </font>
-                              </Label>
-                              <Label fx:id="Value3TitleID" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                              <Label fx:id="Value3TitleID" text="Label" GridPane.halignment="CENTER" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                  <GridPane.margin>
                                     <Insets top="20.0" />
                                  </GridPane.margin>
@@ -226,12 +207,12 @@
                                     <Font size="14.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="Value3ContentID" text="Label" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="2" GridPane.valignment="TOP">
+                              <Label fx:id="Value3ContentID" text="Label" GridPane.columnIndex="1" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
                                  <GridPane.margin>
                                     <Insets top="20.0" />
                                  </GridPane.margin>
                               </Label>
-                              <Label fx:id="Value2ContentID" text="Label" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                              <Button mnemonicParsing="false" onAction="#escribirLables" text="INFO" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                            </children>
                         </GridPane>
                      </children>

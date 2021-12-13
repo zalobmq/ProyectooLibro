@@ -128,7 +128,7 @@ public class EditScreenController {
 		NameBook(book);
 		mostrarCharacters();
 		TextAreaID.setText(chapter.getText());
-		mostrarLandspace();
+		//mostrarLandspace();
 		mostrarNotes();
 		
 	}
@@ -152,7 +152,7 @@ public class EditScreenController {
             return v;
         });    
     }
-	
+	/*
 	@FXML
 	private void configurarTablaLandscape() {
 		
@@ -162,7 +162,7 @@ public class EditScreenController {
             return v;
         });    
     }
-    
+    */
 	@FXML
 	private void configurarTablaNotes() {
 		
@@ -189,6 +189,7 @@ public class EditScreenController {
 		
 		
 	}
+	/*
 	public void mostrarLandspace() {
 		
 		configurarTablaLandscape();
@@ -204,6 +205,18 @@ public class EditScreenController {
 		}
 		
 	}
+	*/
+	/*
+	
+	public void update() {
+		
+		configurarTablaCharacters();
+		configurarTablaLandscape();
+		configurarTablaNotes();
+		
+		
+	}
+	*/
 	public void newCharacter() {
 		
 		try {
@@ -216,6 +229,19 @@ public class EditScreenController {
 		}
 
 	}
+	/*
+	public void newLandspace() {
+		
+		try {
+			NewLandspaceControlller.setBook(book);
+			App.loadScene(new Stage(), "NewLandspace", "New Landspace ");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	*/
 	
 	public void mostrarNotes() {
 		
@@ -232,11 +258,6 @@ public class EditScreenController {
 		}
 		
 	}
-	/*
-	 public void writeLabelCharacter() {
-		
-	}
-	 */
 	
 	public void escribirCapitulo() {
 		
@@ -280,6 +301,41 @@ public class EditScreenController {
 				e.printStackTrace();
 			}
 		}
+	}
+	
+	public void escribirLables() {
+		
+		if (TableCharacterID.getSelectionModel().getSelectedItem() != null) {
+		
+			character= TableCharacterID.getSelectionModel().getSelectedItem();
+		
+			Value1TitleID.setText("NOMBRE");
+			Value1ContentID.setText(character.getName());
+			
+			Value3TitleID.setText("DESCRIPCION");
+			Value3ContentID.setText(character.getDescription());
+		}else if(TableNotesID.getSelectionModel().getSelectedItem() != null) {
+			
+			note= TableNotesID.getSelectionModel().getSelectedItem();
+			Value1TitleID.setText("TITULO");
+			Value1ContentID.setText(note.getTitle());
+			
+			Value3TitleID.setText("TEXTO");
+			Value3ContentID.setText(note.getText());
+			
+		}else {
+			Value1TitleID.setText("");
+			Value1ContentID.setText("");
+			Value3TitleID.setText("");
+			Value3ContentID.setText("");
+
+			
+		}
+			
+		
+		
+			
+	
 	}
 	@FXML
 	private void mostrarAlertErrorEmptyFields() {
