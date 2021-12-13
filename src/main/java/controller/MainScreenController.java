@@ -63,6 +63,7 @@ public class MainScreenController {
 		welcomeAuthor(author);
 		showBooks();
 		
+		
 	}
 	
 	public static void setAuthor (Author a) {
@@ -184,14 +185,21 @@ public class MainScreenController {
 		}
 		
 	}
-	/*
-	@FXML
-	private void showChapters() {
+	
+	public void update() {
+		
+		configurarTablaBooks();
+		try {
+			List<Book> booksDB = BookImpMariaDB.getBookByAuthor(author);
+			System.out.println(booksDB.toString());
+			ObservableList<Book>lista = FXCollections.observableArrayList(booksDB);
+			TableBookID.setItems(lista);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		configurarTablaChapter();
-		
-		
 	}
-	*/
 	
 	
 	
