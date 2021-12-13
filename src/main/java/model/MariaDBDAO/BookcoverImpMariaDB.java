@@ -74,7 +74,7 @@ public class BookcoverImpMariaDB {
 			EntityManager em = createEM();
 			em.getTransaction().begin();
 			em.persist(bc);
-			em.getTransaction().begin();
+			em.getTransaction().commit();
 			result = true;
 		} catch (Exception e) {
 			result = false;
