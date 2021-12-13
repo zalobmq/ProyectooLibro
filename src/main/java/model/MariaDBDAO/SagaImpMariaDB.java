@@ -110,7 +110,7 @@ public class SagaImpMariaDB {
 	/*
 	 * Método que se usa para buscar una saga por id en la base de datos
 	 * @Param int id de la saga que se quiera buscar
-	 * @Return Saga que tiene la id correspendiente en caso de que se haya encontrado o id=-1 si la saga no se ha encontrado
+	 * @Return Saga que tiene la id correspendiente en caso de que se haya encontrado o id=-1 si la saga y no se ha encontrado
 	 * 
 	 * */
 	public static Saga getByID(long id) throws DAOException {

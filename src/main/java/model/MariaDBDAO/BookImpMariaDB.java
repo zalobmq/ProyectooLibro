@@ -11,6 +11,7 @@ import javax.persistence.TypedQuery;
 import model.Author;
 import model.Book;
 import model.Chapter;
+import model.Character;
 import model.Note;
 import model.IDAO.DAOException;
 import utils.PersistenceUnit;
@@ -117,6 +118,27 @@ public class BookImpMariaDB {
 		return result;
 
 	}
+	
+	public static boolean addCharacter(Book b, Character c) throws DAOException {
+		boolean result=false;
+		EntityManager em = createEM();
+		try {
+			em.getTransaction().begin();
+			
+			em.merge(c);
+			c.getBooks_character().add(b);
+			b.getCharacters().add(c);
+			em.getTransaction().commit();
+			result=true;			
+		}catch (Exception e) {
+			
+			result=false;
+			throw new DAOException("Can´t add Character in book",e);
+		}finally {
+			em.close();
+		}
+		return result;
+	}
 
 	
 	/*
@@ -127,6 +149,15 @@ public class BookImpMariaDB {
 	 * */
 	public static Book getByID(long id) throws DAOException {
 		Book result=new Book();
+		EntityManager em=createEM();
+		try {
+			em.getTransaction().begin();
+			result=em.find(Book.class, id);
+			em.getTransaction().commit();
+		} catch (Exception e) {
+			throw new DAOException("Can´t get book with this id",e);
+		}
+		
 		return result;
 	}
 	/*
@@ -158,7 +189,7 @@ public class BookImpMariaDB {
 			throw new DAOException("Can´t find books",e);
 		}finally {
 			//en La carga lazy no se debe cerrar la conexion
-			em.close();
+			//em.close();
 		}
 		return result;
 	}
