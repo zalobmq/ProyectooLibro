@@ -1,6 +1,7 @@
 package controller;
 
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Observable;
 
@@ -8,12 +9,15 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
+import javafx.stage.Stage;
 import model.Book;
 import model.Chapter;
 import model.Character;
@@ -93,6 +97,9 @@ public class EditScreenController {
 	@FXML
 	private TableColumn<Note, String> 	NameNoteID;
 	
+	@FXML
+	private CheckBox Finish;
+	
 	private ObservableList<Character> listaCharacters;
 	private ObservableList<Landscape> listaLandspace;
 	private ObservableList<Note> listaNotes;
@@ -110,7 +117,8 @@ public class EditScreenController {
 	
 	public static void setBook(Book b) {
 		
-		book = b;	
+		book = b;
+		
     }
 	
 	@FXML
@@ -119,20 +127,9 @@ public class EditScreenController {
 		NameChapter(chapter);
 		NameBook(book);
 		mostrarCharacters();
-		
+		TextAreaID.setText(chapter.getText());
 		mostrarLandspace();
 		mostrarNotes();
-		/*
-		List<Character> listabdc;
-		try {
-			System.out.println(book.toString());
-			listabdc = CharacterImpMariaDB.getCharacterByBook(book);
-			System.out.println(listabdc.toString());
-		} catch (DAOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		*/
 		
 	}
 	
@@ -207,6 +204,19 @@ public class EditScreenController {
 		}
 		
 	}
+	public void newCharacter() {
+		
+		try {
+			NewCharacterController.setBook(book);
+
+			App.loadScene(new Stage(), "NewCharacter", "New Character ");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+	}
+	
 	public void mostrarNotes() {
 		
 		configurarTablaNotes();
@@ -228,10 +238,70 @@ public class EditScreenController {
 	}
 	 */
 	
-	private void newCharacter() {
+	public void escribirCapitulo() {
+		
+		/*
+		 * 1.Mostarar el texto del capitulo.Se hace en el initialize
+		 * 2.setear el texto en el capitulo.
+		 * 3.actualizar el capitulo.
+		 * 
+		 * */
+		chapter.setText(TextAreaID.getText());
+		try {
+			ChapterImpMariaDB.update(chapter);
+			mostrarAlertInfo();
+			
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	
 		
 		
 	}
+	
+	public void buttonFinish() {
+		
+		if (Finish.isSelected()) {
+			
+			chapter.setFinish(true);	
+			try {
+				ChapterImpMariaDB.update(chapter);
+			} catch (DAOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}else {
+			chapter.setFinish(false);
+			try {
+				ChapterImpMariaDB.update(chapter);
+			} catch (DAOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	@FXML
+	private void mostrarAlertErrorEmptyFields() {
+	    Alert alert = new Alert(Alert.AlertType.ERROR);
+	    alert.setHeaderText(null);
+	    alert.setTitle("Error");
+	    alert.setContentText("DEBES RELLENAR TODOS LOS CAMPOS");
+	    alert.showAndWait();
+	}
+	 
+	@FXML
+	private void mostrarAlertInfo() {
+	    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+	    alert.setHeaderText(null);
+	    alert.setTitle("Info");
+	    alert.setContentText("GUARDADO CORRECTAMENTE");
+	    alert.showAndWait();
+	    
+	}
+	
+	
+	
 	
 	
 	

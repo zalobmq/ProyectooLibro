@@ -11,7 +11,7 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewCharacterController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="250.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewNoteController">
    <children>
       <GridPane layoutX="150.0" layoutY="105.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
         <columnConstraints>
@@ -24,22 +24,22 @@
             <RowConstraints maxHeight="119.4" minHeight="10.0" prefHeight="49.0" vgrow="SOMETIMES" />
         </rowConstraints>
          <children>
-            <TextField fx:id="NameID" promptText="Name" GridPane.rowIndex="1">
+            <TextField fx:id="NameID" promptText="Title" GridPane.rowIndex="1">
                <GridPane.margin>
                   <Insets left="40.0" right="40.0" />
                </GridPane.margin>
             </TextField>
-            <TextArea fx:id="DescriptionID" prefHeight="200.0" prefWidth="200.0" promptText="Description" GridPane.rowIndex="2">
+            <TextArea fx:id="DescriptionID" prefHeight="200.0" prefWidth="200.0" promptText="Text" GridPane.rowIndex="2">
                <GridPane.margin>
                   <Insets bottom="20.0" left="40.0" right="40.0" top="20.0" />
                </GridPane.margin>
             </TextArea>
-            <Label text="NEW CHARACTER" GridPane.halignment="CENTER">
+            <Label text="New Note" GridPane.halignment="CENTER">
                <font>
                   <Font name="System Bold" size="18.0" />
                </font>
             </Label>
-            <Button mnemonicParsing="false" onAction="#addCharacter" text="Add character" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
+            <Button mnemonicParsing="false" onAction="#addCharacter" text="Add note" GridPane.halignment="CENTER" GridPane.rowIndex="3" />
          </children>
       </GridPane>
    </children>

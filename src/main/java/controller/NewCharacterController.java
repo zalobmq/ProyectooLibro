@@ -2,6 +2,7 @@ package controller;
 
 
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import model.Book;
@@ -9,7 +10,6 @@ import model.Character;
 import model.IDAO.DAOException;
 import model.MariaDBDAO.BookImpMariaDB;
 import model.MariaDBDAO.CharacterImpMariaDB;
-import sun.security.krb5.internal.crypto.Des;
 
 public class NewCharacterController {
 	
@@ -41,12 +41,40 @@ public class NewCharacterController {
 		character.setDescription(DescriptionID.getText());
 		character.setDeath(false);
 		try {
-			CharacterImpMariaDB.save(character);
+			CharacterImpMariaDB.save(character);//Guardo personaje
+			System.out.println(book.getCharacters().toString());
+			book.getCharacters().add(character);//lo añado a la lista de personajes del libro
+			System.out.println(book.getCharacters().toString());
+			
+			BookImpMariaDB.update(book);//actualizo libro
+			mostrarAlertInfo();
+			
 		} catch (DAOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		NameID.clear();
+		DescriptionID.clear();
 		
+	}
+	
+	@FXML
+	private void mostrarAlertErrorEmptyFields() {
+	    Alert alert = new Alert(Alert.AlertType.ERROR);
+	    alert.setHeaderText(null);
+	    alert.setTitle("Error");
+	    alert.setContentText("DEBES RELLENAR TODOS LOS CAMPOS");
+	    alert.showAndWait();
+	}
+	 
+	@FXML
+	private void mostrarAlertInfo() {
+	    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+	    alert.setHeaderText(null);
+	    alert.setTitle("Info");
+	    alert.setContentText("PERSONAJE CREADO CORRECTAMENTE");
+	    alert.showAndWait();
+	    
 	}
 	
 }
