@@ -65,6 +65,7 @@ public class NewBookController {
 		try {
 			System.out.println(newBook);
 			author.getbooks_author().add(newBook);
+			AuthorImpMariaDB.update(author);
 			System.out.println(author.getbooks_author().toString());
 			
 			BookImpMariaDB.save(newBook);
