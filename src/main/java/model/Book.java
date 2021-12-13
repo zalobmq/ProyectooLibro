@@ -55,7 +55,7 @@ public class Book implements Serializable{
 	private List<Landscape> landscapes;
 	@ManyToMany(mappedBy = "books_character",cascade = { CascadeType.ALL})
 	private List<Character> characters;
-	@ManyToOne(fetch = FetchType.LAZY,cascade = { CascadeType.ALL,CascadeType.MERGE})
+	@ManyToOne(fetch = FetchType.LAZY,cascade = { })
 	@JoinColumn(name = "books_author")
 	private Author author;
 	@ManyToOne()

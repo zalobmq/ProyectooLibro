@@ -52,8 +52,56 @@ public class NewBookController {
 	protected void initialize() {
 	}
 	
-	
+	/*
 	public void addBook() {
+		
+		
+		Book newBook = new Book();
+		if(TitleID.getText().length()>0 && SynopsisID.getText().length() >0) {
+			/*
+			try {
+				BookImpMariaDB.save(newBook);
+			} catch (DAOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		newBook.setTitle(TitleID.getText());
+		newBook.setGenre(GenereID.getText());
+		newBook.setAuthor(author);
+		newBook.setSypnosis(SynopsisID.getText());
+		try {
+			BookImpMariaDB.save(newBook);
+
+			BookImpMariaDB.update(newBook);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+			System.out.println(newBook);
+			author.getbooks_author().add(newBook);
+			try {
+				AuthorImpMariaDB.update(author);
+			} catch (DAOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			System.out.println(author.getbooks_author().toString());
+			
+			//BookImpMariaDB.update(newBook);
+		
+		
+		mostrarAlertInfo();
+		TitleID.clear();
+		SynopsisID.clear();
+		}else {
+			
+			mostrarAlertErrorEmptyFields();
+		}
+		
+	}
+	*/
+public void addBook() {
 		
 		
 		Book newBook = new Book();

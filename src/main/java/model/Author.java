@@ -41,7 +41,7 @@ public class Author implements Serializable {
 	@Column(name = "EMAIL")
 	private String email;
 	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "author", cascade = {CascadeType.ALL,CascadeType.MERGE}, orphanRemoval = true)
+	@OneToMany(fetch = FetchType.EAGER, mappedBy = "author", cascade = {}, orphanRemoval = true)
 	private List<Book> books_author;
 
 	public Author(Long id, String name, String surname, String password, String email, List<Book> books_author) {
