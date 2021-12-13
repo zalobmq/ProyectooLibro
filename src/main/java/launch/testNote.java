@@ -1,5 +1,7 @@
 package launch;
 
+import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -9,6 +11,8 @@ import model.Author;
 import model.Book;
 import model.Note;
 import model.IDAO.DAOException;
+import model.MariaDBDAO.AuthorImpMariaDB;
+import model.MariaDBDAO.BookImpMariaDB;
 import model.MariaDBDAO.NoteImpMariaDB;
 import model.h2DAO.NoteImpH2;
 public class testNote {
@@ -18,7 +22,8 @@ public class testNote {
 		//saveTestH2();
 		//test();
 		//saveTestMariaDB();
-		getNotesByBookTest();
+		//getNotesByBookTest();
+		saveNoteWithBook(); 
 	}
 	static void test(){
 		
@@ -51,7 +56,22 @@ public class testNote {
 			e.printStackTrace();
 		}
 	}
-	
+	static void saveNoteWithBook() {
+		
+		Author a;
+		try {
+			a = AuthorImpMariaDB.getByEmail("a@a");
+			List<Book> lb=BookImpMariaDB.getBookByAuthor(a);			
+			Book b=lb.get(0);
+			Note n1=new Note("Titulo","descricpcion");
+			b.getNotes().add(n1);
+			BookImpMariaDB.save(b);
+		} catch (DAOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	static void getNotesByBookTest() {
 		Book b=new Book();
 		b.setId(2L);

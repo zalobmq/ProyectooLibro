@@ -8,7 +8,7 @@ import model.MariaDBDAO.BookcoverImpMariaDB;
 public class BookcoverTest {
 
 	public static void main(String[] args) {
-		getBookcoverByBook();
+		//getBookcoverByBook();
 
 	}
 	
@@ -23,5 +23,6 @@ public class BookcoverTest {
 			e.printStackTrace();
 		}
 	}
+	
 
 }

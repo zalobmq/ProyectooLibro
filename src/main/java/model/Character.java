@@ -1,6 +1,7 @@
 package model;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -38,7 +39,7 @@ public class Character {
 	private String description;
 	@Column(name = "DEATH")
 	private boolean death;
-	@ManyToMany(cascade = { CascadeType.ALL, CascadeType.ALL })
+	@ManyToMany(cascade = { CascadeType.ALL, CascadeType.MERGE })
 	@JoinTable(name = "character_book", joinColumns = { @JoinColumn(name = "Character_id") }, inverseJoinColumns = {
 			@JoinColumn(name = "Book_id") })
 	private List<Book> books_character;
@@ -106,9 +107,31 @@ public class Character {
 		this.death = death;
 	}
 
+	
+	/**
+	 * @return the books_character
+	 */
+	public List<Book> getBooks_character() {
+		return books_character;
+	}
+
+	/**
+	 * @param books_character the books_character to set
+	 */
+	public void setBooks_character(List<Book> books_character) {
+		this.books_character = books_character;
+	}
+
+	public List<String> Books_characterString(){
+		List<String> result=new ArrayList<>();
+		for(Book book: books_character) {
+			result.add(book.getTitle());
+		}
+		return result;
+	}
 	@Override
 	public String toString() {
-		return "Character [id=" + id + ", name=" + name + ", description=" + description + ", death=" + death + "]";
+		return "Character [id=" + id + ", name=" + name + ", description=" + description + ", death=" + death +", Book"+Books_characterString().toString()+ "]";
 	}
 
 }
